@@ -29,9 +29,6 @@ jobs:
         run: |
           sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
           xcodebuild -version
-          
-      - name: Check available destinations
-        run: xcodebuild -scheme CaloLink -showdestinations
 
       # Xcode 프로젝트 빌드
       - name: Build the project 🛠
