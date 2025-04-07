@@ -36,5 +36,5 @@ jobs:
           xcodebuild clean build \
             -project CaloLink.xcodeproj \
             -scheme CaloLink \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+            -destination 'platform=iOS Simulator,name=iPhone 13,OS=latest' \
             -skipPackagePluginValidation -skipMacroValidation
