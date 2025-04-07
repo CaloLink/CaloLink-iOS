@@ -1,0 +1,39 @@
+disabled_rules: # 실행에서 제외할 룰 식별자들
+  - redundant_optional_initialization # 옵셔널 변수를 명시적으로 nil로 초기화하는 중복 제거 규칙 제외
+  - force_cast # 강제 형변환 사용 제한
+  - force_try # 예외 처리 없이 try! 사용 제한
+  - function_body_length # 함수 본문의 행 길이 제한
+  - statement_position # 조건문, 반복문 등의 코드 블록 위치를 일정하게 유지하는 규칙 제외
+  - closure_end_indentation # 클로저 끝 부분 들여쓰기 규칙 제외
+  - file_length # 파일 길이 규칙 제외 (400줄 이상 허용)
+  - function_parameter_count # 함수 파라미터 개수 제한 규칙 제외 (5개 초과 허용)
+  - identifier_name # 식별자 이름 길이 제한 규칙 제외
+  - large_tuple # 튜플 멤버 개수 제한 규칙 제외 (2개 초과 허용)
+
+opt_in_rules: # 선택적으로 추가하는 규칙
+  - empty_count # .count == 0보다 isEmpty 사용 권장
+  - empty_string # == ""보다 isEmpty 사용 권장
+  - sorted_imports # import 구문 알파벳 순서로 정렬
+  - vertical_whitespace # 불필요한 개행 줄 제한
+
+analyzer_rules:  # 코드 분석을 위한 규칙
+  - unused_import # 사용되지 않는 import 구문 경고
+  - unused_declaration # 사용되지 않는 선언 경고
+included:
+  - CaloLink
+excluded: # SwiftLint 검사에서 제외되는 경로
+  - Carthage
+  - Pods
+
+# 커스텀 최대 행 길이 규칙
+line_length:
+  warning: 120 # 120자를 초과할 시 경고
+  ignores_urls: true # URL을 최대 길이 규칙에서 제외
+  ignores_comments: true # 주석은 최대 길이 규칙에서 제외
+  ignores_interpolated_strings: true # 문자열 보간법 사용 시 최대 길이 규칙 제외
+
+# 커스텀 공백 규칙
+trailing_whitespace:
+  ignores_empty_lines: false # 빈 줄에서 공백 허용 제외
+
+reporter: "xcode" # 리포트 형식 설정 (xcode 형식)
