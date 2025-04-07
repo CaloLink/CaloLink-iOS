@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-15
 
     steps:
       # GitHub 레포지토리 소스 체크아웃
@@ -27,14 +27,10 @@ jobs:
       # 원하는 Xcode 버전 설정
       - name: Set up Xcode version
         run: |
-          sudo xcode-select -s /Applications/Xcode_15.2.app/Contents/Developer
+          sudo xcode-select -s /Applications/Xcode_16.0.app/Contents/Developer
           xcodebuild -version
 
       # Xcode 프로젝트 빌드
       - name: Build the project 🛠
         run: |
-          xcodebuild clean build \
-            -project CaloLink.xcodeproj \
-            -scheme CaloLink \
-            -destination 'platform=iOS Simulator,name=iPhone 14' \
-            -skipPackagePluginValidation -skipMacroValidation
+          xcodebuild clean build -project CaloLink.xcodeproj -scheme CaloLink -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -skipPackagePluginValidation -skipMacroValidation
