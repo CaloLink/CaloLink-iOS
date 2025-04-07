@@ -15,9 +15,22 @@
 		BC88D0482DA2AE0D0033D52F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BCC060282DA3939600267208 /* Exceptions for "CaloLink" folder in "CaloLink" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BC88D01E2DA27DB10033D52F /* CaloLink */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BC88D0212DA27DB10033D52F /* CaloLink */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BCC060282DA3939600267208 /* Exceptions for "CaloLink" folder in "CaloLink" target */,
+			);
 			path = CaloLink;
 			sourceTree = "<group>";
 		};

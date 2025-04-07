@@ -33,8 +33,4 @@ jobs:
       # Xcode 프로젝트 빌드
       - name: Build the project 🛠
         run: |
-          xcodebuild clean build \
-            -project CaloLink.xcodeproj \
-            -scheme CaloLink \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-            -skipPackagePluginValidation -skipMacroValidation
+          xcodebuild clean build -project CaloLink.xcodeproj -scheme CaloLink -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' -skipPackagePluginValidation -skipMacroValidation
