@@ -8,29 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		BC88D0492DA2AE0D0033D52F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BC88D0482DA2AE0D0033D52F /* .swiftlint.yml */; };
+		BCAEF94D2DAA443300BB355E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAEF9462DAA443300BB355E /* AppDelegate.swift */; };
+		BCAEF94E2DAA443300BB355E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAEF94A2DAA443300BB355E /* SceneDelegate.swift */; };
+		BCAEF94F2DAA443300BB355E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAEF94B2DAA443300BB355E /* ViewController.swift */; };
+		BCAEF9502DAA443300BB355E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCAEF9472DAA443300BB355E /* Assets.xcassets */; };
+		BCAEF9522DAA443300BB355E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCAEF9492DAA443300BB355E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC88D01F2DA27DB10033D52F /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC88D0482DA2AE0D0033D52F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		BCAEF9462DAA443300BB355E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCAEF9472DAA443300BB355E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCAEF9482DAA443300BB355E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCAEF94A2DAA443300BB355E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BCAEF94B2DAA443300BB355E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BCAEF94C2DAA443300BB355E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BCC060282DA3939600267208 /* Exceptions for "CaloLink" folder in "CaloLink" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = BC88D01E2DA27DB10033D52F /* CaloLink */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		BC88D0212DA27DB10033D52F /* CaloLink */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BCC060282DA3939600267208 /* Exceptions for "CaloLink" folder in "CaloLink" target */,
-			);
 			path = CaloLink;
 			sourceTree = "<group>";
 		};
@@ -52,6 +50,8 @@
 			children = (
 				BC88D0482DA2AE0D0033D52F /* .swiftlint.yml */,
 				BC88D0212DA27DB10033D52F /* CaloLink */,
+				BCAEF9532DAA446D00BB355E /* Source */,
+				BCAEF9542DAA448C00BB355E /* Resource */,
 				BC88D0202DA27DB10033D52F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +62,74 @@
 				BC88D01F2DA27DB10033D52F /* CaloLink.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BCAEF9532DAA446D00BB355E /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BCAEF9552DAA44B500BB355E /* Application */,
+				BCAEF9572DAA44E100BB355E /* Data */,
+				BCAEF9582DAA44EA00BB355E /* Domain */,
+				BCAEF9592DAA44FB00BB355E /* Presentation */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		BCAEF9542DAA448C00BB355E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				BCAEF9472DAA443300BB355E /* Assets.xcassets */,
+				BCAEF9482DAA443300BB355E /* Info.plist */,
+				BCAEF9492DAA443300BB355E /* LaunchScreen.storyboard */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		BCAEF9552DAA44B500BB355E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BCAEF9462DAA443300BB355E /* AppDelegate.swift */,
+				BCAEF94A2DAA443300BB355E /* SceneDelegate.swift */,
+				BCAEF94B2DAA443300BB355E /* ViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BCAEF9572DAA44E100BB355E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BCAEF95A2DAA452100BB355E /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BCAEF9582DAA44EA00BB355E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BCAEF9592DAA44FB00BB355E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		BCAEF95A2DAA452100BB355E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BCAEF95B2DAA45A400BB355E /* DTO */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		BCAEF95B2DAA45A400BB355E /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +201,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC88D0492DA2AE0D0033D52F /* .swiftlint.yml in Resources */,
+				BCAEF9502DAA443300BB355E /* Assets.xcassets in Resources */,
+				BCAEF9522DAA443300BB355E /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,10 +235,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCAEF94D2DAA443300BB355E /* AppDelegate.swift in Sources */,
+				BCAEF94E2DAA443300BB355E /* SceneDelegate.swift in Sources */,
+				BCAEF94F2DAA443300BB355E /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BCAEF9492DAA443300BB355E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCAEF94C2DAA443300BB355E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BC88D0332DA27DB30033D52F /* Debug */ = {
