@@ -46,14 +46,6 @@
 		BCAEF9722DAA5D0E00BB355E /* NetworkManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BC88D0212DA27DB10033D52F /* CaloLink */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CaloLink;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		BC88D01C2DA27DB10033D52F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -65,13 +57,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC5C0BD02DAAAE5B008A5F18 /* CaloLink */ = {
+			isa = PBXGroup;
+			children = (
+				BCAEF9532DAA446D00BB355E /* Source */,
+				BCAEF9542DAA448C00BB355E /* Resource */,
+			);
+			path = CaloLink;
+			sourceTree = "<group>";
+		};
 		BC88D0162DA27DB10033D52F = {
 			isa = PBXGroup;
 			children = (
 				BC88D0482DA2AE0D0033D52F /* .swiftlint.yml */,
-				BC88D0212DA27DB10033D52F /* CaloLink */,
-				BCAEF9532DAA446D00BB355E /* Source */,
-				BCAEF9542DAA448C00BB355E /* Resource */,
+				BC5C0BD02DAAAE5B008A5F18 /* CaloLink */,
 				BC88D0202DA27DB10033D52F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -201,17 +200,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC88D0322DA27DB30033D52F /* Build configuration list for PBXNativeTarget "CaloLink" */;
 			buildPhases = (
-				BC88D01B2DA27DB10033D52F /* Sources */,
 				BC88D04C2DA2B7A30033D52F /* SwiftLint Script */,
+				BC88D01B2DA27DB10033D52F /* Sources */,
 				BC88D01C2DA27DB10033D52F /* Frameworks */,
 				BC88D01D2DA27DB10033D52F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				BC88D0212DA27DB10033D52F /* CaloLink */,
 			);
 			name = CaloLink;
 			packageProductDependencies = (
@@ -288,7 +284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if [[ \"$(uname -m)\" == \"arm64\" ]]; then\n  export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed. Please install via https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -337,7 +333,7 @@
 				DEVELOPMENT_TEAM = 4UKSP7K2F4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CaloLink/Info.plist;
+				INFOPLIST_FILE = CaloLink/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -365,7 +361,7 @@
 				DEVELOPMENT_TEAM = 4UKSP7K2F4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CaloLink/Info.plist;
+				INFOPLIST_FILE = CaloLink/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
