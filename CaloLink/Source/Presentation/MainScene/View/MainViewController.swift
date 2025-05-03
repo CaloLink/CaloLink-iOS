@@ -16,5 +16,20 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureAddAction()
+    }
+}
+
+// MARK: - Configure AddAction
+extension MainViewController {
+    private func configureAddAction() {
+        mainView.searchButton.addAction(UIAction { _ in
+            self.searchButtonTapped()
+        }, for: .touchUpInside)
+    }
+
+    private func searchButtonTapped() {
+        let searchViewController = SearchViewController()
+        navigationController?.pushViewController(searchViewController, animated: true)
     }
 }

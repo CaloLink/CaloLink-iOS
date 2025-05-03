@@ -17,7 +17,7 @@ final class MainView: UIView {
         return imageView
     }()
 
-    private let searchButton: UIButton = {
+    let searchButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         config.baseBackgroundColor = .white
