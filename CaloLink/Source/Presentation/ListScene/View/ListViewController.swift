@@ -8,6 +8,8 @@
 import UIKit
 
 class ListViewController: UIViewController {
+    private let listView = ListView()
+    private let listNoProductView = ListNoProductView()
     var searchText: String?
 
     private let searchTextField: UITextField = {
@@ -37,24 +39,25 @@ class ListViewController: UIViewController {
         return textField
     }()
 
+    override func loadView() {
+        view = listView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        configureView()
         configureTextField()
-    }
-}
-
-// MARK: - Configure View
-extension ListViewController {
-    private func configureView() {
-        view.backgroundColor = .white
-        searchTextField.text = searchText
+        configureTableView()
     }
 }
 
 // MARK: - Configure TextField
 extension ListViewController: UITextFieldDelegate {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchTextField.text = searchText
+    }
+
     private func configureTextField() {
         searchTextField.delegate = self
     }
@@ -64,9 +67,15 @@ extension ListViewController: UITextFieldDelegate {
             return false
         }
         textField.resignFirstResponder()
-        searchText = textField.text
-        // TODO: - 재검색
-//        fetchListData(with: searchText)
+
+        if searchText == text {
+            return false
+        }
+
+        let newListViewController = ListViewController()
+        newListViewController.searchText = text
+        navigationController?.pushViewController(newListViewController, animated: true)
+
         return true
     }
 }
@@ -108,5 +117,46 @@ extension ListViewController {
 
     @objc private func cancelButtonTapped() {
         navigationController?.popToRootViewController(animated: true)
+    }
+}
+
+// MARK: - Configure TableView, Cell
+extension ListViewController: UITableViewDataSource {
+    private func configureTableView() {
+        let tableView = listView.tableView
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(
+            ListTableViewCell.self,
+            forCellReuseIdentifier: "ListTableViewCell"
+        )
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 100
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "ListTableViewCell",
+            for: indexPath
+        ) as? ListTableViewCell else {
+            return UITableViewCell()
+        }
+
+        // 임시 데이터 주입
+        let image = UIImage(systemName: "fish")!
+        let title = "상품 \(indexPath.row + 1)"
+        let category = "카테고리명"
+
+        cell.configureProductData(image: image, title: title, category: category)
+        return cell
+    }
+}
+
+// MARK: - 셀 선택 처리
+extension ListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("셀 터치됨")
     }
 }

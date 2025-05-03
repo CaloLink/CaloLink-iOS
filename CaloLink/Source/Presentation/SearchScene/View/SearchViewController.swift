@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    private let searchView = SearchView()
+
     private let searchTextField: UITextField = {
         let textField = UITextField()
         textField.layer.borderColor = UIColor.systemGray4.cgColor
@@ -35,23 +37,19 @@ class SearchViewController: UIViewController {
         return textField
     }()
 
+    override func loadView() {
+        view = searchView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
-        configureView()
         configureTextField()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchTextField.becomeFirstResponder()
-    }
-}
-
-// MARK: - Configure View
-extension SearchViewController {
-    private func configureView() {
-        view.backgroundColor = .white
     }
 }
 
@@ -62,12 +60,17 @@ extension SearchViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else {
+        guard let fixedText = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !fixedText.isEmpty else {
             return false
         }
+
+        textField.resignFirstResponder()
+        textField.text = ""
+
         let listViewController = ListViewController()
-        listViewController.searchText = textField.text
+        listViewController.searchText = fixedText
         navigationController?.pushViewController(listViewController, animated: true)
+
         return true
     }
 }
