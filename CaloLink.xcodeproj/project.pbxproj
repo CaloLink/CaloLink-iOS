@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				BC5FC1742DC65C5D009A36B6 /* SearchView.swift */,
-				BC5FC1602DC5E8D4009A36B6 /* SearchViewController.swift */,
 				BC5FC1762DC6FFCB009A36B6 /* SearchKeywordTableViewCell.swift */,
+				BC5FC1602DC5E8D4009A36B6 /* SearchViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
