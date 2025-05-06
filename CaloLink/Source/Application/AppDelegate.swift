@@ -13,8 +13,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        // Override point for customization after application launch.
+        registerDependencies()
         return true
+    }
+
+    // MARK: - Register Dependencies
+    private func registerDependencies() {
+        let diContainer = DIContainer.shared
+
+        // MARK: - NetworkManager
+        diContainer.register(
+            NetworkManagerProtocol.self,
+            instance: NetworkManager()
+        )
+
+        // MARK: - Repository
+        diContainer.register(
+            SearchKeywordRepositoryProtocol.self,
+            instance: SearchKeywordRepository()
+        )
+
+        // MARK: - UseCase
+        diContainer.register(
+            SearchKeywordUseCaseProtocol.self,
+            instance: SearchKeywordUseCase(
+                searchKeywordRepository: diContainer.resolve(SearchKeywordRepositoryProtocol.self)
+            )
+        )
+
+        // MARK: - ViewModel
+        diContainer.register(
+            SearchViewModelProtocol.self,
+            instance: SearchViewModel(
+                searchKeywordUseCase: diContainer.resolve(SearchKeywordUseCaseProtocol.self)
+            )
+        )
     }
 
     // MARK: UISceneSession Lifecycle
