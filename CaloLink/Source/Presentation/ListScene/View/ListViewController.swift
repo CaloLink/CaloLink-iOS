@@ -12,6 +12,8 @@ class ListViewController: UIViewController {
     private let listNoProductView = ListNoProductView()
     var searchText: String?
 
+    private let searchViewModel: SearchViewModelProtocol
+
     private let searchTextField: UITextField = {
         let textField = UITextField()
         textField.layer.borderColor = UIColor.systemGray4.cgColor
@@ -39,6 +41,20 @@ class ListViewController: UIViewController {
         return textField
     }()
 
+    // MARK: - Init
+    init(
+        searchText: String? = nil,
+        searchViewModel: SearchViewModelProtocol
+    ) {
+        self.searchText = searchText
+        self.searchViewModel = searchViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func loadView() {
         view = listView
     }
@@ -50,15 +66,15 @@ class ListViewController: UIViewController {
         configureTableView()
         configureAddTarget()
     }
-}
 
-// MARK: - Configure TextField
-extension ListViewController: UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         searchTextField.text = searchText
     }
+}
 
+// MARK: - Configure TextField
+extension ListViewController: UITextFieldDelegate {
     private func configureTextField() {
         searchTextField.delegate = self
     }
@@ -73,10 +89,9 @@ extension ListViewController: UITextFieldDelegate {
             return false
         }
 
-        addRecentKeyword(keyword)
+        searchViewModel.addKeyword(keyword)
 
-        let newListViewController = ListViewController()
-        newListViewController.searchText = keyword
+        let newListViewController = ListViewController(searchText: keyword, searchViewModel: searchViewModel)
         navigationController?.pushViewController(newListViewController, animated: true)
 
         return true
@@ -160,28 +175,13 @@ extension ListViewController: UITableViewDataSource {
 // MARK: - 셀 선택 처리
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            guard let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell else { return }
+        guard let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell else { return }
 
-            let detailVC = DetailViewController()
-            detailVC.productImage = cell.getImage()
-            detailVC.productName = cell.getTitle()
+        let detailVC = DetailViewController()
+        detailVC.productImage = cell.getImage()
+        detailVC.productName = cell.getTitle()
 
-            navigationController?.pushViewController(detailVC, animated: true)
-        }
-}
-
-// MARK: - 최근 검색어 저장
-extension ListViewController {
-    private func addRecentKeyword(_ keyword: String) {
-        var keywords = UserDefaults.standard.stringArray(forKey: "recentSearchKeywords") ?? []
-        keywords.removeAll { $0 == keyword }
-        keywords.insert(keyword, at: 0)
-
-        if keywords.count > 10 {
-            keywords = Array(keywords.prefix(10))
-        }
-
-        UserDefaults.standard.set(keywords, forKey: "recentSearchKeywords")
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

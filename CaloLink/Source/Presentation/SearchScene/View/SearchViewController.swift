@@ -136,7 +136,7 @@ extension SearchViewController: UITextFieldDelegate {
 
         searchViewModel.addKeyword(keyword)
 
-        let listViewController = ListViewController()
+        let listViewController = ListViewController(searchViewModel: searchViewModel)
         listViewController.searchText = keyword
         navigationController?.pushViewController(listViewController, animated: true)
 
