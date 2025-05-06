@@ -28,10 +28,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
 
         // MARK: - Repository
+        diContainer.register(
+            SearchKeywordRepository.self,
+            instance: SearchKeywordRepository()
+        )
 
         // MARK: - UseCase
+        diContainer.register(
+            SearchKeywordUseCase.self,
+            instance: SearchKeywordUseCase(
+                searchKeywordRepository: diContainer.resolve(SearchKeywordRepositoryProtocol.self)
+            )
+        )
 
         // MARK: - ViewModel
+        diContainer.register(
+            SearchViewModel.self,
+            instance: SearchViewModel(
+                searchKeywordUseCase: diContainer.resolve(SearchKeywordUseCaseProtocol.self)
+            )
+        )
     }
 
     // MARK: UISceneSession Lifecycle
