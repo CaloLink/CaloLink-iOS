@@ -48,6 +48,7 @@ class ListViewController: UIViewController {
         configureNavigationBar()
         configureTextField()
         configureTableView()
+        configureAddTarget()
     }
 }
 
@@ -63,17 +64,19 @@ extension ListViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty else {
+        guard let keyword = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !keyword.isEmpty else {
             return false
         }
         textField.resignFirstResponder()
 
-        if searchText == text {
+        if searchText == keyword {
             return false
         }
 
+        addRecentKeyword(keyword)
+
         let newListViewController = ListViewController()
-        newListViewController.searchText = text
+        newListViewController.searchText = keyword
         navigationController?.pushViewController(newListViewController, animated: true)
 
         return true
@@ -157,6 +160,44 @@ extension ListViewController: UITableViewDataSource {
 // MARK: - 셀 선택 처리
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("셀 터치됨")
+            guard let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell else { return }
+
+            let detailVC = DetailViewController()
+            detailVC.productImage = cell.getImage()
+            detailVC.productName = cell.getTitle()
+
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+}
+
+// MARK: - 최근 검색어 저장
+extension ListViewController {
+    private func addRecentKeyword(_ keyword: String) {
+        var keywords = UserDefaults.standard.stringArray(forKey: "recentSearchKeywords") ?? []
+        keywords.removeAll { $0 == keyword }
+        keywords.insert(keyword, at: 0)
+
+        if keywords.count > 10 {
+            keywords = Array(keywords.prefix(10))
+        }
+
+        UserDefaults.standard.set(keywords, forKey: "recentSearchKeywords")
+    }
+}
+
+// MARK: - Configure addTarget
+extension ListViewController {
+    private func configureAddTarget() {
+        listView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
+    }
+
+    @objc private func filterButtonTapped() {
+        let filterViewController = FilterViewController()
+        filterViewController.modalPresentationStyle = .pageSheet
+        if let sheet = filterViewController.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(filterViewController, animated: true)
     }
 }
