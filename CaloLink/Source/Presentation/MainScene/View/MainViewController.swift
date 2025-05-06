@@ -29,7 +29,8 @@ extension MainViewController {
     }
 
     private func searchButtonTapped() {
-        let searchViewController = SearchViewController()
+        let searchViewModel = DIContainer.shared.resolve(SearchViewModelProtocol.self)
+        let searchViewController = SearchViewController(searchViewModel: searchViewModel)
         navigationController?.pushViewController(searchViewController, animated: true)
     }
 }

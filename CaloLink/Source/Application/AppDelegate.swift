@@ -29,13 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: - Repository
         diContainer.register(
-            SearchKeywordRepository.self,
+            SearchKeywordRepositoryProtocol.self,
             instance: SearchKeywordRepository()
         )
 
         // MARK: - UseCase
         diContainer.register(
-            SearchKeywordUseCase.self,
+            SearchKeywordUseCaseProtocol.self,
             instance: SearchKeywordUseCase(
                 searchKeywordRepository: diContainer.resolve(SearchKeywordRepositoryProtocol.self)
             )
@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: - ViewModel
         diContainer.register(
-            SearchViewModel.self,
+            SearchViewModelProtocol.self,
             instance: SearchViewModel(
                 searchKeywordUseCase: diContainer.resolve(SearchKeywordUseCaseProtocol.self)
             )

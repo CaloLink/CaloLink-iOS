@@ -8,8 +8,9 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    // MARK: - Properties
     private let searchView = SearchView()
-    private var recentKeywords: [String] = []
+    private var searchViewModel: SearchViewModelProtocol
 
     private let searchTextField: UITextField = {
         let textField = UITextField()
@@ -38,28 +39,45 @@ class SearchViewController: UIViewController {
         return textField
     }()
 
-    // MARK: - Life Cycle
+    // MARK: - Initializer
+    init(searchViewModel: SearchViewModelProtocol) {
+        self.searchViewModel = searchViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func loadView() {
         view = searchView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBinding()
+        configureInitialKeywords()
         configureNavigationBar()
         configureTextField()
         configureTableView()
         configureAddTarget()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadRecentKeywords()
-        searchView.searchKeywordTableView.reloadData()
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchTextField.becomeFirstResponder()
+    }
+}
+// MARK: - Bind func
+extension SearchViewController {
+    private func configureBinding() {
+        searchViewModel.keywordsUpdatedHandler = { [weak self] in
+            self?.searchView.searchKeywordTableView.reloadData()
+        }
+    }
+
+    private func configureInitialKeywords() {
+        searchViewModel.loadKeywords()
     }
 }
 
@@ -110,14 +128,13 @@ extension SearchViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let keyword = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines), !keyword.isEmpty else {
-            return false
-        }
+        guard let keyword = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !keyword.isEmpty else { return false }
 
         textField.resignFirstResponder()
         textField.text = ""
 
-        addRecentKeyword(keyword)
+        searchViewModel.addKeyword(keyword)
 
         let listViewController = ListViewController()
         listViewController.searchText = keyword
@@ -128,19 +145,16 @@ extension SearchViewController: UITextFieldDelegate {
 }
 
 // MARK: - Configure TableView
-extension SearchViewController {
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     private func configureTableView() {
         let tableView = searchView.searchKeywordTableView
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SearchKeywordTableViewCell.self, forCellReuseIdentifier: "SearchKeywordTableViewCell")
     }
-}
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentKeywords.count
+        return searchViewModel.keywords.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,72 +164,36 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         ) as? SearchKeywordTableViewCell else {
             return UITableViewCell()
         }
-        let keyword = recentKeywords[indexPath.row]
+
+        let keyword = searchViewModel.keywords[indexPath.row]
         cell.configureKeyword(with: keyword)
         cell.delegate = self
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let keyword = recentKeywords[indexPath.row]
+        let keyword = searchViewModel.keywords[indexPath.row]
         searchTextField.text = keyword
         _ = textFieldShouldReturn(searchTextField)
     }
 }
 
-// MARK: - 최근 검색어 처리
-extension SearchViewController {
-    private func addRecentKeyword(_ keyword: String) {
-        var keywords = UserDefaults.standard.stringArray(forKey: "recentSearchKeywords") ?? []
-        keywords.removeAll { $0 == keyword }
-        keywords.insert(keyword, at: 0)
-
-        if keywords.count > 10 {
-            keywords = Array(keywords.prefix(10))
-        }
-
-        UserDefaults.standard.set(keywords, forKey: "recentSearchKeywords")
-        recentKeywords = keywords
-        searchView.searchKeywordTableView.reloadData()
-    }
-
-    private func clearRecentKeywords() {
-        recentKeywords = []
-        UserDefaults.standard.removeObject(forKey: "recentSearchKeywords")
-        searchView.searchKeywordTableView.reloadData()
-    }
-
-    private func loadRecentKeywords() {
-        recentKeywords = UserDefaults.standard.stringArray(forKey: "recentSearchKeywords") ?? []
-    }
-}
-
-// MARK: - 셀 삭제 버튼 델리게이트 처리
+// MARK: - 셀 개별 삭제 델리게이트
 extension SearchViewController: SearchKeywordTableViewCellDelegate {
     func deleteButtonTapped(in cell: SearchKeywordTableViewCell) {
         guard let indexPath = searchView.searchKeywordTableView.indexPath(for: cell) else { return }
-
-        let keywordToDelete = recentKeywords[indexPath.row]
-        var keywords = UserDefaults.standard.stringArray(forKey: "recentSearchKeywords") ?? []
-        keywords.removeAll { $0 == keywordToDelete }
-
-        if keywords.count > 10 {
-            keywords = Array(keywords.prefix(10))
-        }
-
-        UserDefaults.standard.set(keywords, forKey: "recentSearchKeywords")
-        recentKeywords = keywords
-        searchView.searchKeywordTableView.reloadData()
+        let keyword = searchViewModel.keywords[indexPath.row]
+        searchViewModel.deleteKeyword(keyword)
     }
 }
 
-// MARK: - Configure addTarget: 전체삭제 버튼
+// MARK: - Configure AddTarget
 extension SearchViewController {
     private func configureAddTarget() {
-        searchView.allDeleteButton.addTarget(self, action: #selector(clearAllKeywords), for: .touchUpInside)
+        searchView.allDeleteButton.addTarget(self, action: #selector(allDeleteButtonTapped), for: .touchUpInside)
     }
 
-    @objc private func clearAllKeywords() {
-        clearRecentKeywords()
+    @objc private func allDeleteButtonTapped() {
+        searchViewModel.allDeleteKeywords()
     }
 }
