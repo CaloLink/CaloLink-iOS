@@ -83,3 +83,14 @@ extension ListTableViewCell {
         categoryLabel.text = category
     }
 }
+
+// MARK: - 데이터 전달
+extension ListTableViewCell {
+    func getImage() -> UIImage? {
+        return productImageView.image
+    }
+
+    func getTitle() -> String? {
+        return productNameLabel.text
+    }
+}

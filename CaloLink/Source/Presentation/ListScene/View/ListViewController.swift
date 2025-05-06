@@ -160,8 +160,14 @@ extension ListViewController: UITableViewDataSource {
 // MARK: - 셀 선택 처리
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("셀 터치됨")
-    }
+            guard let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell else { return }
+
+            let detailVC = DetailViewController()
+            detailVC.productImage = cell.getImage()
+            detailVC.productName = cell.getTitle()
+
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
 }
 
 // MARK: - 최근 검색어 저장
