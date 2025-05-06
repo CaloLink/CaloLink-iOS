@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC0155B62DC9D57B00F4B295 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0155B52DC9D57B00F4B295 /* FilterViewController.swift */; };
 		BC1650772DBCB5D40026A0FC /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1650762DBCB5D40026A0FC /* MainView.swift */; };
 		BC1650792DBCB5DF0026A0FC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1650782DBCB5DF0026A0FC /* MainViewController.swift */; };
 		BC16507B2DBCB84A0026A0FC /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16507A2DBCB84A0026A0FC /* CategoryButton.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC0155B52DC9D57B00F4B295 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		BC1650762DBCB5D40026A0FC /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		BC1650782DBCB5DF0026A0FC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BC16507A2DBCB84A0026A0FC /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				BC5FC16A2DC63AC2009A36B6 /* ListView.swift */,
 				BC5FC1682DC63204009A36B6 /* ListTableViewCell.swift */,
 				BC5FC1632DC5FE7B009A36B6 /* ListViewController.swift */,
+				BC0155B52DC9D57B00F4B295 /* FilterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				BC1650792DBCB5DF0026A0FC /* MainViewController.swift in Sources */,
 				BCAEF96C2DAA4A8F00BB355E /* JSONBodyEndPoint.swift in Sources */,
 				BCAEF94F2DAA443300BB355E /* ViewController.swift in Sources */,
+				BC0155B62DC9D57B00F4B295 /* FilterViewController.swift in Sources */,
 				BC5FC1642DC5FE7B009A36B6 /* ListViewController.swift in Sources */,
 				BCAEF9612DAA479B00BB355E /* HttpMethod.swift in Sources */,
 				BC5FC16D2DC64138009A36B6 /* ListNoProductView.swift in Sources */,

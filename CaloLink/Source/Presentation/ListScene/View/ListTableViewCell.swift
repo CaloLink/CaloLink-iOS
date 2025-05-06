@@ -11,21 +11,22 @@ class ListTableViewCell: UITableViewCell {
     private let productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 7
         imageView.clipsToBounds = true
         return imageView
     }()
 
     private let productNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 21)
-        label.textColor = UIColor(.black)
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = .black
         return label
     }()
 
     private let categoryLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = UIColor(.red)
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .darkGray
         return label
     }()
 
@@ -63,13 +64,13 @@ extension ListTableViewCell {
             productImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             productImageView.widthAnchor.constraint(equalTo: productImageView.heightAnchor),
 
-            productNameLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 10),
-            productNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            productNameLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 15),
+            productNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
             productNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
 
-            categoryLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 10),
-            categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            categoryLabel.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 40)
+            categoryLabel.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 15),
+            categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            categoryLabel.topAnchor.constraint(equalTo: productNameLabel.bottomAnchor, constant: 20)
         ])
     }
 }

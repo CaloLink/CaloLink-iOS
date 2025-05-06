@@ -8,12 +8,12 @@
 import UIKit
 
 class ListView: UIView {
-    private let filterButton: UIButton = {
+    let filterButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
-        config.baseBackgroundColor = .white
+        config.baseBackgroundColor = .systemGreen
         config.image = UIImage(systemName: "line.3.horizontal.decrease")
-        config.baseForegroundColor = .darkGray
+        config.baseForegroundColor = .white
         config.imagePlacement = .leading
         config.imagePadding = 8
         config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12)
@@ -25,13 +25,11 @@ class ListView: UIView {
             "필터 설정하기",
             attributes: AttributeContainer([
                 .font: scaledFont,
-                .foregroundColor: UIColor.darkGray
+                .foregroundColor: UIColor.white
             ])
         )
         button.configuration = config
         button.contentHorizontalAlignment = .center
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.systemGray4.cgColor
         button.layer.cornerRadius = 7
         button.clipsToBounds = true
         return button
@@ -41,7 +39,7 @@ class ListView: UIView {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-        tableView.rowHeight = 170
+        tableView.rowHeight = 150
         tableView.separatorStyle = .singleLine
         tableView.separatorInset = .zero
         tableView.separatorColor = .lightGray

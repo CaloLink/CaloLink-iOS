@@ -48,6 +48,7 @@ class ListViewController: UIViewController {
         configureNavigationBar()
         configureTextField()
         configureTableView()
+        configureAddTarget()
     }
 }
 
@@ -175,5 +176,22 @@ extension ListViewController {
         }
 
         UserDefaults.standard.set(keywords, forKey: "recentSearchKeywords")
+    }
+}
+
+// MARK: - Configure addTarget
+extension ListViewController {
+    private func configureAddTarget() {
+        listView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
+    }
+
+    @objc private func filterButtonTapped() {
+        let filterViewController = FilterViewController()
+        filterViewController.modalPresentationStyle = .pageSheet
+        if let sheet = filterViewController.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(filterViewController, animated: true)
     }
 }
