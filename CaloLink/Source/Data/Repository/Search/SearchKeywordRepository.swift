@@ -7,13 +7,6 @@
 
 import Foundation
 
-protocol SearchKeywordRepositoryProtocol {
-    func fetchKeywords() -> [String]
-    func saveKeyword(_ keyword: String)
-    func allDeleteKeywords()
-    func deleteKeyword(_ keyword: String)
-}
-
 final class SearchKeywordRepository: SearchKeywordRepositoryProtocol {
     private let key = "recentSearchKeywords"
 
