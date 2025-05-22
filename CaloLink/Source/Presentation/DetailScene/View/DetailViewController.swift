@@ -33,17 +33,9 @@ class DetailViewController: UIViewController {
         return segmentedControl
     }()
 
-    private let productNutritionView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
-    }()
+    private let productNutritionView = ProductNutritionView()
 
-    private let productPriceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        return view
-    }()
+    private let productPriceView = ProductPriceView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
