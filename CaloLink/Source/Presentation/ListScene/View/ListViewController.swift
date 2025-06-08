@@ -189,15 +189,40 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController {
     private func configureAddTarget() {
         listView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
+        listView.sortButton.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }
 
     @objc private func filterButtonTapped() {
         let filterViewController = FilterViewController()
         filterViewController.modalPresentationStyle = .pageSheet
         if let sheet = filterViewController.sheetPresentationController {
-            sheet.detents = [.medium()]
+            sheet.detents = [.large()]
             sheet.prefersGrabberVisible = true
         }
         present(filterViewController, animated: true)
+    }
+
+    @objc private func sortButtonTapped() {
+        let sortViewController = SortViewController()
+        sortViewController.modalPresentationStyle = .pageSheet
+
+        sortViewController.onSortSelected = { [weak self] selectedText in
+            guard let self = self else { return }
+
+            var config = self.listView.sortButton.configuration
+            let baseFont = UIFont.boldSystemFont(ofSize: 15)
+            let scaledFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: baseFont)
+
+            config?.attributedTitle = AttributedString(selectedText, attributes: AttributeContainer([
+                .font: scaledFont
+            ]))
+            self.listView.sortButton.configuration = config
+        }
+
+        if let sheet = sortViewController.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(sortViewController, animated: true)
     }
 }
