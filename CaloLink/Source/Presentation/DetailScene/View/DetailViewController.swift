@@ -40,11 +40,37 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        configureNavigationBar()
         configureLayout()
         configureTitle()
         configureSegmentedControl()
     }
 }
+
+// MARK: - Configure Navigation Bar
+extension DetailViewController {
+    private func configureNavigationBar() {
+        // BackButton
+        let backButton = UIButton(type: .system)
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        backButton.tintColor = .black
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        let leftItem = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = leftItem
+
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        appearance.shadowColor = .clear
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+
+    @objc private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
 // MARK: - Configure Layout
 extension DetailViewController {
     private func configureLayout() {
