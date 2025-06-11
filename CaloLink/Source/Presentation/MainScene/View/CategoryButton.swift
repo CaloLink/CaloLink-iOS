@@ -8,8 +8,11 @@
 import UIKit
 
 final class CategoryButton: UIButton {
+    private(set) var titleText: String = ""
+
     init(title: String, image: UIImage) {
         super.init(frame: .zero)
+        self.titleText = title
         configureButtonUI(title: title, image: image)
     }
 
@@ -42,7 +45,7 @@ extension CategoryButton {
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: fontSize * (45.0 / 13.0))
 
         config.imageColorTransformer = UIConfigurationColorTransformer { _ in
-            return .systemGray
+            return .systemGray5
         }
 
         config.titleAlignment = .center

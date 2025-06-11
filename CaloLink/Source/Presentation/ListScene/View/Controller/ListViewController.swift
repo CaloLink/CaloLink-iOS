@@ -13,6 +13,8 @@ class ListViewController: UIViewController {
     var searchText: String?
 
     private let searchViewModel: SearchViewModelProtocol
+    private let filterViewModel = FilterViewModel()
+    private let sortViewModel = SortViewModel()
 
     private let searchTextField: UITextField = {
         let textField = UITextField()
@@ -101,14 +103,12 @@ extension ListViewController: UITextFieldDelegate {
 // MARK: - Configure NavigationBar
 extension ListViewController {
     private func configureNavigationBar() {
-        // BackButton
         let backButton = UIButton(type: .system)
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         backButton.tintColor = .black
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         let leftItem = UIBarButtonItem(customView: backButton)
 
-        // CancelButton
         let cancelButton = UIBarButtonItem(
             title: " 취소",
             style: .plain,
@@ -117,10 +117,10 @@ extension ListViewController {
         )
         cancelButton.tintColor = .black
 
-        // NaviBar
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = cancelButton
         navigationItem.titleView = searchTextField
+
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = .white
@@ -162,7 +162,6 @@ extension ListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        // 임시 데이터 주입
         let image = UIImage(systemName: "fish")!
         let title = "상품 \(indexPath.row + 1)"
         let category = "카테고리명"
@@ -189,15 +188,45 @@ extension ListViewController: UITableViewDelegate {
 extension ListViewController {
     private func configureAddTarget() {
         listView.filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
+        listView.sortButton.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }
 
     @objc private func filterButtonTapped() {
-        let filterViewController = FilterViewController()
-        filterViewController.modalPresentationStyle = .pageSheet
-        if let sheet = filterViewController.sheetPresentationController {
+        let filterVC = FilterViewController(filterViewModel: filterViewModel)
+        filterVC.onFilterCompleted = { [weak self] filters in
+            print("선택된 필터값: \(filters)")
+            // TODO: 필터 적용 로직 추가
+        }
+
+        filterVC.modalPresentationStyle = .pageSheet
+        if let sheet = filterVC.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(filterVC, animated: true)
+    }
+
+    @objc private func sortButtonTapped() {
+        let sortVC = SortViewController(sortViewModel: sortViewModel)
+        sortVC.modalPresentationStyle = .pageSheet
+
+        sortVC.onSortSelected = { [weak self] selectedText in
+            guard let self = self else { return }
+
+            var config = self.listView.sortButton.configuration
+            let baseFont = UIFont.boldSystemFont(ofSize: 15)
+            let scaledFont = UIFontMetrics(forTextStyle: .body).scaledFont(for: baseFont)
+
+            config?.attributedTitle = AttributedString(selectedText, attributes: AttributeContainer([
+                .font: scaledFont
+            ]))
+            self.listView.sortButton.configuration = config
+        }
+
+        if let sheet = sortVC.sheetPresentationController {
             sheet.detents = [.medium()]
             sheet.prefersGrabberVisible = true
         }
-        present(filterViewController, animated: true)
+        present(sortVC, animated: true)
     }
 }

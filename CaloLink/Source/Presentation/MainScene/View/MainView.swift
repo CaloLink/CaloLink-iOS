@@ -8,9 +8,12 @@
 import UIKit
 
 final class MainView: UIView {
+    // MARK: - UI Components
+    private(set) var categoryButtons: [CategoryButton] = []
+
     private let logoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.3.sequence.fill")
+        imageView.image = UIImage(resource: .logo)
         imageView.tintColor = .systemGray
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -46,84 +49,18 @@ final class MainView: UIView {
         return button
     }()
 
-    private let category0 = CategoryButton(
-        title: "면류",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private let category1 = CategoryButton(
-        title: "간편식",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private let category2 = CategoryButton(
-        title: "간식",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private let category3 = CategoryButton(
-        title: "유제품",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private let category4 = CategoryButton(
-        title: "음료",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private let category5 = CategoryButton(
-        title: "커피 / 차",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private let category6 = CategoryButton(
-        title: "헬스",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private let category7 = CategoryButton(
-        title: "제로식품",
-        image: UIImage(systemName: "square.fill")!
-    )
-
-    private lazy var firstCategoryRowSV: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [
-            category0,
-            category1,
-            category2,
-            category3
-        ])
-        stack.axis = .horizontal
-        stack.alignment = .fill
-        stack.distribution = .fillEqually
-        stack.spacing = 10
-        return stack
-    }()
-
-    private lazy var secondCategoryRowSV: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [
-            category4,
-            category5,
-            category6,
-            category7
-        ])
-        stack.axis = .horizontal
-        stack.alignment = .fill
-        stack.distribution = .fillEqually
-        stack.spacing = 10
-        return stack
-    }()
-
-    private lazy var entireCategorySV: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [firstCategoryRowSV, secondCategoryRowSV])
+    private lazy var categoryStackView: UIStackView = {
+        let stack = UIStackView()
         stack.axis = .vertical
-        stack.alignment = .fill
+        stack.spacing = 10
         stack.distribution = .fillEqually
         return stack
     }()
 
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        createCategoryButtons()
         configureInitialSetting()
         configureSubviews()
         configureLayout()
@@ -134,20 +71,47 @@ final class MainView: UIView {
     }
 }
 
-// MARK: - Configure Initial Setting
+// MARK: - Config CategoryButtons
+extension MainView {
+    private func createCategoryButtons() {
+        let titles = ["면류", "간편식", "간식", "유제품", "음료", "커피 / 차", "헬스", "제로식품"]
+
+        categoryButtons = titles.enumerated().map { index, title in
+            // TODO: "category0" ~ "category7" 이름의 이미지를 Assets에 추가하고 연결할 것
+            let image = UIImage(named: "category\(index)") ?? UIImage(systemName: "square")!
+            return CategoryButton(title: title, image: image)
+        }
+
+        let rows = stride(from: 0, to: categoryButtons.count, by: 4).map {
+            Array(categoryButtons[$0..<min($0 + 4, categoryButtons.count)])
+        }
+
+        rows.forEach { row in
+            let rowStack = createCategoryRowStack(with: row)
+            categoryStackView.addArrangedSubview(rowStack)
+        }
+    }
+
+    private func createCategoryRowStack(with buttons: [UIButton]) -> UIStackView {
+        let rowStack = UIStackView(arrangedSubviews: buttons)
+        rowStack.axis = .horizontal
+        rowStack.distribution = .fillEqually
+        rowStack.spacing = 10
+        return rowStack
+    }
+}
+
+// MARK: - Layout & View Config
 extension MainView {
     private func configureInitialSetting() {
         backgroundColor = .white
     }
-}
 
-// MARK: - Configure AutoLayout
-extension MainView {
     private func configureSubviews() {
         [
             logoImage,
             searchButton,
-            entireCategorySV
+            categoryStackView
         ].forEach {
             addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -156,19 +120,18 @@ extension MainView {
 
     private func configureLayout() {
         NSLayoutConstraint.activate([
-            logoImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 130),
-            logoImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -130),
-            logoImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
-            logoImage.heightAnchor.constraint(equalTo: logoImage.widthAnchor, multiplier: 0.5),
+            logoImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            logoImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            logoImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 70),
 
             searchButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             searchButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            searchButton.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 60),
+            searchButton.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 50),
             searchButton.heightAnchor.constraint(equalToConstant: 50),
 
-            entireCategorySV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            entireCategorySV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            entireCategorySV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60)
+            categoryStackView.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 80),
+            categoryStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            categoryStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
     }
 }
