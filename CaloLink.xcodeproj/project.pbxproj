@@ -26,6 +26,9 @@
 		BC5FC1752DC65C5D009A36B6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5FC1742DC65C5D009A36B6 /* SearchView.swift */; };
 		BC5FC1772DC6FFCB009A36B6 /* SearchKeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5FC1762DC6FFCB009A36B6 /* SearchKeywordTableViewCell.swift */; };
 		BC788B1F2DF5D00800EF79A4 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC788B1E2DF5D00800EF79A4 /* SortViewController.swift */; };
+		BC7FCFCE2DF919F00045565B /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FCFCD2DF919F00045565B /* ListViewModel.swift */; };
+		BC7FCFD02DF919FD0045565B /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FCFCF2DF919FD0045565B /* FilterViewModel.swift */; };
+		BC7FCFD22DF91A080045565B /* SortViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7FCFD12DF91A080045565B /* SortViewModel.swift */; };
 		BC88D0492DA2AE0D0033D52F /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = BC88D0482DA2AE0D0033D52F /* .swiftlint.yml */; };
 		BC9684402DCB4E2F00FE42AF /* SearchKeywordRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC96843F2DCB4E2F00FE42AF /* SearchKeywordRepositoryProtocol.swift */; };
 		BCAEF94D2DAA443300BB355E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCAEF9462DAA443300BB355E /* AppDelegate.swift */; };
@@ -65,6 +68,9 @@
 		BC5FC1742DC65C5D009A36B6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		BC5FC1762DC6FFCB009A36B6 /* SearchKeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywordTableViewCell.swift; sourceTree = "<group>"; };
 		BC788B1E2DF5D00800EF79A4 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		BC7FCFCD2DF919F00045565B /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		BC7FCFCF2DF919FD0045565B /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		BC7FCFD12DF91A080045565B /* SortViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewModel.swift; sourceTree = "<group>"; };
 		BC88D01F2DA27DB10033D52F /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC88D0482DA2AE0D0033D52F /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BC96843F2DCB4E2F00FE42AF /* SearchKeywordRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchKeywordRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -110,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				BC5FC1622DC5FE58009A36B6 /* View */,
+				BC7FCFCC2DF9195E0045565B /* ViewModel */,
 			);
 			path = ListScene;
 			sourceTree = "<group>";
@@ -202,12 +209,8 @@
 		BC5FC1622DC5FE58009A36B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BC5FC16C2DC64138009A36B6 /* ListNoProductView.swift */,
-				BC5FC16A2DC63AC2009A36B6 /* ListView.swift */,
-				BC5FC1682DC63204009A36B6 /* ListTableViewCell.swift */,
-				BC5FC1632DC5FE7B009A36B6 /* ListViewController.swift */,
-				BC0155B52DC9D57B00F4B295 /* FilterViewController.swift */,
-				BC788B1E2DF5D00800EF79A4 /* SortViewController.swift */,
+				BC7FCFCA2DF918240045565B /* View */,
+				BC7FCFCB2DF9183B0045565B /* Controller */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +231,36 @@
 				BC1247D12DDEDF6A00E16610 /* ProductPriceView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BC7FCFCA2DF918240045565B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BC5FC16C2DC64138009A36B6 /* ListNoProductView.swift */,
+				BC5FC16A2DC63AC2009A36B6 /* ListView.swift */,
+				BC5FC1682DC63204009A36B6 /* ListTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC7FCFCB2DF9183B0045565B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC5FC1632DC5FE7B009A36B6 /* ListViewController.swift */,
+				BC0155B52DC9D57B00F4B295 /* FilterViewController.swift */,
+				BC788B1E2DF5D00800EF79A4 /* SortViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BC7FCFCC2DF9195E0045565B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC7FCFCD2DF919F00045565B /* ListViewModel.swift */,
+				BC7FCFCF2DF919FD0045565B /* FilterViewModel.swift */,
+				BC7FCFD12DF91A080045565B /* SortViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		BC88D0162DA27DB10033D52F = {
@@ -480,6 +513,7 @@
 				BC3B414C2DCA2F5E000A2E15 /* SearchKeywordRepository.swift in Sources */,
 				BCAEF95D2DAA468F00BB355E /* APIConstant.swift in Sources */,
 				BC5FC1612DC5E8D4009A36B6 /* SearchViewController.swift in Sources */,
+				BC7FCFD02DF919FD0045565B /* FilterViewModel.swift in Sources */,
 				BC1247D02DDEDF5B00E16610 /* ProductNutritionView.swift in Sources */,
 				BCAEF96A2DAA4A8400BB355E /* Endpoint.swift in Sources */,
 				BC3B41512DCA318B000A2E15 /* SearchKeywordUseCase.swift in Sources */,
@@ -489,10 +523,12 @@
 				BCAEF94D2DAA443300BB355E /* AppDelegate.swift in Sources */,
 				BCAEF94E2DAA443300BB355E /* SceneDelegate.swift in Sources */,
 				BC5FC1692DC63204009A36B6 /* ListTableViewCell.swift in Sources */,
+				BC7FCFCE2DF919F00045565B /* ListViewModel.swift in Sources */,
 				BCAEF9712DAA5BC800BB355E /* Cancellable.swift in Sources */,
 				BC788B1F2DF5D00800EF79A4 /* SortViewController.swift in Sources */,
 				BCAEF9662DAA4A6600BB355E /* NetworkManager.swift in Sources */,
 				BC5FC1732DC64C63009A36B6 /* DetailViewController.swift in Sources */,
+				BC7FCFD22DF91A080045565B /* SortViewModel.swift in Sources */,
 				BC16507B2DBCB84A0026A0FC /* CategoryButton.swift in Sources */,
 				BC5FC1752DC65C5D009A36B6 /* SearchView.swift in Sources */,
 				BC5FC16B2DC63AC2009A36B6 /* ListView.swift in Sources */,

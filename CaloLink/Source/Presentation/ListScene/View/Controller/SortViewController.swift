@@ -8,11 +8,7 @@
 import UIKit
 
 class SortViewController: UIViewController {
-    private let sortingOptions = ["추천순", "낮은 가격순", "높은 가격순", "신상품순"]
-    private var selectedIndex: Int? = nil
-
-    var onSortSelected: ((String) -> Void)?
-
+    // MARK: - UI Components
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.isScrollEnabled = false
@@ -21,7 +17,7 @@ class SortViewController: UIViewController {
         return tableView
     }()
 
-    let completeButton: UIButton = {
+    private let completeButton: UIButton = {
         let button = UIButton()
         var config = UIButton.Configuration.filled()
         config.background.backgroundColor = .systemGray4
@@ -34,21 +30,37 @@ class SortViewController: UIViewController {
             ])
         )
         button.configuration = config
-        button.isEnabled = false  // 초기엔 비활성화
+        button.isEnabled = false
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    // MARK: - Properties
+    private let sortViewModel: SortViewModel
+    var onSortSelected: ((String) -> Void)?
+
+    // MARK: - Init
+    init(sortViewModel: SortViewModel) {
+        self.sortViewModel = sortViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureLayout()
-        configureTableView()
         configureAddTarget()
+        configureTableView()
     }
+}
 
-    // MARK: - Layout
+// MARK: - Configure Layout
+extension SortViewController {
     private func configureLayout() {
         view.addSubview(tableView)
         view.addSubview(completeButton)
@@ -65,45 +77,45 @@ class SortViewController: UIViewController {
             completeButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+}
 
+// MARK: - Configure AddTarget
+extension SortViewController {
+    private func configureAddTarget() {
+        completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+    }
+
+    @objc private func completeButtonTapped() {
+        guard let selectedText = sortViewModel.selectedOption else {
+            dismiss(animated: true)
+            return
+        }
+
+        onSortSelected?(selectedText)
+        dismiss(animated: true)
+    }
+}
+
+extension SortViewController: UITableViewDelegate, UITableViewDataSource {
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "SortCell")
     }
 
-    private func configureAddTarget() {
-        completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
-    }
-
-    @objc private func completeButtonTapped() {
-        guard let selectedIndex = selectedIndex else {
-            dismiss(animated: true)
-            return
-        }
-
-        let selectedText = sortingOptions[selectedIndex]
-        onSortSelected?(selectedText)
-        dismiss(animated: true)
-    }
-}
-
-// MARK: - UITableView Delegate & DataSource
-extension SortViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortingOptions.count
+        return sortViewModel.sortingOptions.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SortCell", for: indexPath)
-        cell.textLabel?.text = sortingOptions[indexPath.row]
+        cell.textLabel?.text = sortViewModel.sortingOptions[indexPath.row]
         cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
-
         cell.separatorInset = .zero
         cell.layoutMargins = .zero
         cell.preservesSuperviewLayoutMargins = false
 
-        if selectedIndex == indexPath.row {
+        if sortViewModel.isSelected(at: indexPath.row) {
             let checkmark = UIImageView(image: UIImage(systemName: "checkmark"))
             checkmark.tintColor = .systemGreen
             cell.accessoryView = checkmark
@@ -115,7 +127,7 @@ extension SortViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
+        sortViewModel.selectOption(at: indexPath.row)
         completeButton.isEnabled = true
         completeButton.configuration?.background.backgroundColor = .systemGreen
         tableView.reloadData()
