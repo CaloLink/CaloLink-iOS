@@ -8,8 +8,11 @@
 import UIKit
 
 final class CategoryButton: UIButton {
+    private(set) var titleText: String = ""
+
     init(title: String, image: UIImage) {
         super.init(frame: .zero)
+        self.titleText = title
         configureButtonUI(title: title, image: image)
     }
 
