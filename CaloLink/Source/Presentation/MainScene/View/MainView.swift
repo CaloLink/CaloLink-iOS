@@ -10,7 +10,7 @@ import UIKit
 final class MainView: UIView {
     private let logoImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.3.sequence.fill")
+        imageView.image = UIImage(resource: .logo)
         imageView.tintColor = .systemGray
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -48,42 +48,42 @@ final class MainView: UIView {
 
     private let category0 = CategoryButton(
         title: "면류",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private let category1 = CategoryButton(
         title: "간편식",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private let category2 = CategoryButton(
         title: "간식",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private let category3 = CategoryButton(
         title: "유제품",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private let category4 = CategoryButton(
         title: "음료",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private let category5 = CategoryButton(
         title: "커피 / 차",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private let category6 = CategoryButton(
         title: "헬스",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private let category7 = CategoryButton(
         title: "제로식품",
-        image: UIImage(systemName: "square.fill")!
+        image: UIImage(systemName: "square")!
     )
 
     private lazy var firstCategoryRowSV: UIStackView = {
@@ -156,19 +156,18 @@ extension MainView {
 
     private func configureLayout() {
         NSLayoutConstraint.activate([
-            logoImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 130),
-            logoImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -130),
-            logoImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
-            logoImage.heightAnchor.constraint(equalTo: logoImage.widthAnchor, multiplier: 0.5),
+            logoImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            logoImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            logoImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 70),
 
             searchButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             searchButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            searchButton.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 60),
+            searchButton.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 50),
             searchButton.heightAnchor.constraint(equalToConstant: 50),
 
-            entireCategorySV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 30),
-            entireCategorySV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -30),
-            entireCategorySV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -60)
+            entireCategorySV.topAnchor.constraint(equalTo: searchButton.bottomAnchor, constant: 80),
+            entireCategorySV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            entireCategorySV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
     }
 }

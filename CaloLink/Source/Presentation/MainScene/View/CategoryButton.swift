@@ -42,7 +42,7 @@ extension CategoryButton {
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: fontSize * (45.0 / 13.0))
 
         config.imageColorTransformer = UIConfigurationColorTransformer { _ in
-            return .systemGray
+            return .systemGray5
         }
 
         config.titleAlignment = .center
