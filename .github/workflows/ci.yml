@@ -1,0 +1,48 @@
+# 워크플로우의 이름
+name: iOS CI
+
+# 워크플로우가 실행될 조건
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+# 실행될 작업들의 목록
+jobs:
+  build-and-test:
+    # 이 작업은 GitHub에서 제공하는 최신 macOS 환경에서 실행됨
+    runs-on: macos-latest
+
+    # 작업 내에서 실행될 단계들
+    steps:
+      # 1. 레포지토리 코드 체크아웃
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. (디버깅용) 러너에 설치된 Xcode 버전 목록 확인
+      - name: List available Xcode versions
+        run: ls /Applications | grep Xcode
+
+      # 3. 현재 선택된 Xcode 버전 확인
+      - name: Show current version of Xcode
+        run: xcodebuild -version
+
+      # 4. 사용할 Xcode 버전 선택
+      - name: Select Xcode version
+        run: |
+          sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+          xcodebuild -version
+
+      # 5. 사용 가능한 시뮬레이터 목록 출력
+      - name: List available simulators
+        run: xcrun simctl list devices available
+
+      # 6. 프로젝트 빌드 및 테스트 실행
+      - name: Build and Test
+        working-directory: ./CaloLink
+        run: |
+          xcodebuild test \
+            -project CaloLink.xcodeproj \
+            -scheme CaloLink \
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2'
