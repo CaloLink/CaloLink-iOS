@@ -12,7 +12,7 @@ on:
 jobs:
   build-and-test:
     # 이 작업은 GitHub에서 제공하는 최신 macOS 환경에서 실행됨
-    runs-on: macos-latest
+    runs-on: macos-15
 
     # 작업 내에서 실행될 단계들
     steps:
