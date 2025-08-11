@@ -20,13 +20,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. (디버깅용) 러너에 설치된 Xcode 버전 목록 확인
-      - name: List available Xcode versions
-        run: ls /Applications | grep Xcode
+#      # 2. (디버깅용) 러너에 설치된 Xcode 버전 목록 확인
+#      - name: List available Xcode versions
+#        run: ls /Applications | grep Xcode
 
-      # 3. 현재 선택된 Xcode 버전 확인
-      - name: Show current version of Xcode
-        run: xcodebuild -version
+#      # 3. 현재 선택된 Xcode 버전 확인
+#      - name: Show current version of Xcode
+#        run: xcodebuild -version
 
       # 4. 사용할 Xcode 버전 선택
       - name: Select Xcode version
@@ -34,9 +34,9 @@ jobs:
           sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
           xcodebuild -version
 
-      # 5. 사용 가능한 시뮬레이터 목록 출력
-      - name: List available simulators
-        run: xcrun simctl list devices available
+#      # 5. 사용 가능한 시뮬레이터 목록 출력
+#      - name: List available simulators
+#        run: xcrun simctl list devices available
 
       # 6. 프로젝트 빌드 및 테스트 실행
       - name: Build and Test
@@ -45,4 +45,6 @@ jobs:
           xcodebuild test \
             -project CaloLink.xcodeproj \
             -scheme CaloLink \
-            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2'
+            -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2' \
+            -skipPackagePluginValidation \
+            -skipMacroValidation
