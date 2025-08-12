@@ -15,6 +15,7 @@
 		BC7342E42E4B427900A24ADE /* ProductDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342E32E4B427200A24ADE /* ProductDetail.swift */; };
 		BC7342E62E4B428000A24ADE /* NutritionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342E52E4B427C00A24ADE /* NutritionInfo.swift */; };
 		BC7342E82E4B428800A24ADE /* ShopLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342E72E4B428600A24ADE /* ShopLink.swift */; };
+		BC7342EA2E4B479300A24ADE /* ProductRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342E92E4B478300A24ADE /* ProductRepositoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		BC7342E32E4B427200A24ADE /* ProductDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetail.swift; sourceTree = "<group>"; };
 		BC7342E52E4B427C00A24ADE /* NutritionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionInfo.swift; sourceTree = "<group>"; };
 		BC7342E72E4B428600A24ADE /* ShopLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopLink.swift; sourceTree = "<group>"; };
+		BC7342E92E4B478300A24ADE /* ProductRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryProtocol.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +251,7 @@
 		BC7342DD2E4AF9B700A24ADE /* RepositoryProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				BC7342E92E4B478300A24ADE /* ProductRepositoryProtocol.swift */,
 			);
 			path = RepositoryProtocol;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				BC7342BF2E4AE5EF00A24ADE /* SceneDelegate.swift in Sources */,
 				BC7342E42E4B427900A24ADE /* ProductDetail.swift in Sources */,
 				BC7342E22E4B3EA300A24ADE /* Product.swift in Sources */,
+				BC7342EA2E4B479300A24ADE /* ProductRepositoryProtocol.swift in Sources */,
 				BC7342C02E4AE5EF00A24ADE /* ViewController.swift in Sources */,
 				BC7342C12E4AE5EF00A24ADE /* AppDelegate.swift in Sources */,
 			);
