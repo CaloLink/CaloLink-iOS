@@ -36,8 +36,12 @@ extension Endpoint {
         guard var urlComponents = URLComponents(string: baseURL) else { return nil }
         urlComponents.path += path
 
-        if case .requestWithPatameters(let parameters) = task {
-            urlComponents.queryItems = parameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+        if case .requestWithParameters(let parameters) = task {
+            // nil이 아닌 값만 쿼리 아이템으로 변환
+            urlComponents.queryItems = parameters.compactMap { key, value in
+                guard let value = value else { return nil }
+                return URLQueryItem(name: key, value: "\(value)")
+            }
         }
 
         guard let url = urlComponents.url else { return nil }
@@ -66,6 +70,6 @@ enum HttpMethod: String {
 // MARK: - 요청에 필요한 파라미터나 Body를 정의하는 열거형
 enum NetworkTask {
     case requestPlain                           // 파라미터나 Body가 없는 요청
-    case requestWithPatameters([String: Any])   // URL Query 파라미터가 있는 요청
+    case requestWithParameters([String: Any?])  // URL Query 파라미터가 있는 요청
     case requestWithEncodable(Encodable)        // Body에 Encodable 객체를 담는 요청
 }
