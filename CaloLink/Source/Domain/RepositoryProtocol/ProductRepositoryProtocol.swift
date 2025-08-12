@@ -38,7 +38,7 @@ struct SearchQuery {
 }
 
 // MARK: - SortOption
-enum SortOption {
+enum SortOption: String {
     case defaultOrder                   // 기본순
     case priceAscending                 // 가격 낮은 순
     case priceDescending                // 가격 높은 순

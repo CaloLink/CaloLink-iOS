@@ -1,9 +1,36 @@
 //
-//  ProductListReesponseDTO.swift
+//  ProductListResponseDTO.swift
 //  CaloLink
 //
 //  Created by 김성훈 on 8/12/25.
 //
+
+/*
+ API 요청(Request)과 응답(Response) 예시
+
+ 1. 앱이 서버에 보내는 요청 (Request):
+    - HTTP Method: GET
+    - URL: /products/search?query=닭가슴살&sort=price_asc&page=1
+
+ 2. 서버가 앱에 보내주는 응답 (Response):
+    - Body (JSON):
+      {
+          "products": [
+              {
+                  "id": "P001",
+                  "name": "맛있는 닭가슴살 100g",
+                  "imageURL": "https://example.com/images/chicken_breast.jpg",
+                  "price": 2500,
+                  "keyNutrients": [
+                      { "name": "단백질", "value": "25g" },
+                      { "name": "칼로리", "value": "130kcal" }
+                  ]
+              }
+          ],
+          "totalPages": 10,
+          "currentPage": 1
+      }
+*/
 
 import Foundation
 

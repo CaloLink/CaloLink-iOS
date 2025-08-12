@@ -5,6 +5,41 @@
 //  Created by 김성훈 on 8/12/25.
 //
 
+/*
+ API 요청(Request)과 응답(Response) 예시
+
+ 1. 앱이 서버에 보내는 요청 (Request):
+    - HTTP Method: GET
+    - URL: /products/P001  (P001은 상품의 고유 ID)
+
+ 2. 서버가 앱에 보내주는 응답 (Response):
+    - Body (JSON):
+      {
+          "id": "P001",
+          "name": "맛있는 닭가슴살 100g",
+          "imageURL": "https://example.com/images/chicken_breast.jpg",
+          "nutritionInfo": {
+              "totalSize": 100,
+              "calories": 130,
+              "sodium": { "amount": 300, "unit": "mg", "percentage": 15 },
+              "carbs": { "amount": 2, "unit": "g", "percentage": 1 },
+              "sugars": { "amount": 1, "unit": "g", "percentage": null },
+              "fat": { "amount": 3, "unit": "g", "percentage": 4 },
+              "transFat": { "amount": 0, "unit": "g", "percentage": 0 },
+              "saturatedFat": { "amount": 1, "unit": "g", "percentage": 5 },
+              "cholesterol": { "amount": 80, "unit": "mg", "percentage": 27 },
+              "protein": { "amount": 25, "unit": "g", "percentage": 50 }
+          },
+          "shopLinks": [
+              {
+                  "mallName": "쿠팡",
+                  "price": 2500,
+                  "linkURL": "https://coupang.com/products/P001"
+              }
+          ]
+      }
+*/
+
 import Foundation
 
 // MARK: - ProductDetailDTO

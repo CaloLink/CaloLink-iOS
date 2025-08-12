@@ -15,7 +15,7 @@ protocol Endpoint {
     var baseURL: String { get }
     var path: String { get }
     var method: HttpMethod { get }
-    var headers: [String: String] { get }
+    var headers: [String: String]? { get }
     var task: NetworkTask { get }
 
     func toURLRequest() -> URLRequest?
@@ -24,8 +24,7 @@ protocol Endpoint {
 // MARK: - 기본 구현을 통해 중복 코드를 줄임
 extension Endpoint {
     var baseURL: String {
-        // TODO: - 실제 서버 Base URL로 교체하기
-        return "실제 서버 Base URL로 교체"
+        return APIConstant.baseURL
     }
 
     var headers: [String: String]? {
