@@ -20,6 +20,7 @@
 		BC7342EE2E4B4D5600A24ADE /* GetProductDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342ED2E4B4D4F00A24ADE /* GetProductDetailUseCase.swift */; };
 		BC7342FD2E4B56C800A24ADE /* ProductListReesponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342FC2E4B56BF00A24ADE /* ProductListReesponseDTO.swift */; };
 		BC7342FF2E4B587400A24ADE /* ProductDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342FE2E4B586E00A24ADE /* ProductDetailDTO.swift */; };
+		BC7343012E4B5BC100A24ADE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343002E4B5BB200A24ADE /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		BC7342ED2E4B4D4F00A24ADE /* GetProductDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductDetailUseCase.swift; sourceTree = "<group>"; };
 		BC7342FC2E4B56BF00A24ADE /* ProductListReesponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListReesponseDTO.swift; sourceTree = "<group>"; };
 		BC7342FE2E4B586E00A24ADE /* ProductDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDTO.swift; sourceTree = "<group>"; };
+		BC7343002E4B5BB200A24ADE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +289,7 @@
 		BC7342E02E4AF9D800A24ADE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				BC7343002E4B5BB200A24ADE /* Endpoint.swift */,
 				BC7342FB2E4B56B600A24ADE /* DTOs */,
 			);
 			path = Network;
@@ -467,6 +470,7 @@
 				BC7342E62E4B428000A24ADE /* NutritionInfo.swift in Sources */,
 				BC7342EE2E4B4D5600A24ADE /* GetProductDetailUseCase.swift in Sources */,
 				BC7342E82E4B428800A24ADE /* ShopLink.swift in Sources */,
+				BC7343012E4B5BC100A24ADE /* Endpoint.swift in Sources */,
 				BC7342BF2E4AE5EF00A24ADE /* SceneDelegate.swift in Sources */,
 				BC7342E42E4B427900A24ADE /* ProductDetail.swift in Sources */,
 				BC7342E22E4B3EA300A24ADE /* Product.swift in Sources */,
