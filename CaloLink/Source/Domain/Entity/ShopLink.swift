@@ -11,5 +11,5 @@ import Foundation
 struct ShopLink {
     let mallName: String        // 쇼핑몰 이름
     let price: Int              // 해당 쇼핑몰에서의 가격
-    let linkURL: URL            // 구매 페이지로 이동할 URL
+    let linkURL: URL?           // 구매 페이지로 이동할 URL
 }

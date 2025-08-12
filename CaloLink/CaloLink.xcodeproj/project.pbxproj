@@ -18,6 +18,13 @@
 		BC7342EA2E4B479300A24ADE /* ProductRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342E92E4B478300A24ADE /* ProductRepositoryProtocol.swift */; };
 		BC7342EC2E4B4D4600A24ADE /* SearchProductsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342EB2E4B4D3200A24ADE /* SearchProductsUseCase.swift */; };
 		BC7342EE2E4B4D5600A24ADE /* GetProductDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342ED2E4B4D4F00A24ADE /* GetProductDetailUseCase.swift */; };
+		BC7342FD2E4B56C800A24ADE /* ProductListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342FC2E4B56BF00A24ADE /* ProductListResponseDTO.swift */; };
+		BC7342FF2E4B587400A24ADE /* ProductDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342FE2E4B586E00A24ADE /* ProductDetailDTO.swift */; };
+		BC7343012E4B5BC100A24ADE /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343002E4B5BB200A24ADE /* Endpoint.swift */; };
+		BC7343062E4B608C00A24ADE /* ProductAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343052E4B608800A24ADE /* ProductAPI.swift */; };
+		BC7343082E4B62F500A24ADE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343072E4B62EF00A24ADE /* NetworkService.swift */; };
+		BC73430A2E4B635400A24ADE /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343092E4B634900A24ADE /* NetworkError.swift */; };
+		BC7343152E4B7B6A00A24ADE /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343142E4B7B6300A24ADE /* APIConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +57,13 @@
 		BC7342E92E4B478300A24ADE /* ProductRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryProtocol.swift; sourceTree = "<group>"; };
 		BC7342EB2E4B4D3200A24ADE /* SearchProductsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductsUseCase.swift; sourceTree = "<group>"; };
 		BC7342ED2E4B4D4F00A24ADE /* GetProductDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductDetailUseCase.swift; sourceTree = "<group>"; };
+		BC7342FC2E4B56BF00A24ADE /* ProductListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListResponseDTO.swift; sourceTree = "<group>"; };
+		BC7342FE2E4B586E00A24ADE /* ProductDetailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailDTO.swift; sourceTree = "<group>"; };
+		BC7343002E4B5BB200A24ADE /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		BC7343052E4B608800A24ADE /* ProductAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAPI.swift; sourceTree = "<group>"; };
+		BC7343072E4B62EF00A24ADE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		BC7343092E4B634900A24ADE /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		BC7343142E4B7B6300A24ADE /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,8 +297,47 @@
 		BC7342E02E4AF9D800A24ADE /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				BC73430D2E4B76E600A24ADE /* Endpoints */,
+				BC73430C2E4B76D500A24ADE /* Service */,
+				BC73430B2E4B76C100A24ADE /* Common */,
+				BC7342FB2E4B56B600A24ADE /* DTOs */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		BC7342FB2E4B56B600A24ADE /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342FC2E4B56BF00A24ADE /* ProductListResponseDTO.swift */,
+				BC7342FE2E4B586E00A24ADE /* ProductDetailDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		BC73430B2E4B76C100A24ADE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BC7343142E4B7B6300A24ADE /* APIConstant.swift */,
+				BC7343002E4B5BB200A24ADE /* Endpoint.swift */,
+				BC7343092E4B634900A24ADE /* NetworkError.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BC73430C2E4B76D500A24ADE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BC7343072E4B62EF00A24ADE /* NetworkService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		BC73430D2E4B76E600A24ADE /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				BC7343052E4B608800A24ADE /* ProductAPI.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 		BCFC37782E4A0385009A03D0 = {
@@ -451,12 +504,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7342E62E4B428000A24ADE /* NutritionInfo.swift in Sources */,
+				BC73430A2E4B635400A24ADE /* NetworkError.swift in Sources */,
 				BC7342EE2E4B4D5600A24ADE /* GetProductDetailUseCase.swift in Sources */,
 				BC7342E82E4B428800A24ADE /* ShopLink.swift in Sources */,
+				BC7343012E4B5BC100A24ADE /* Endpoint.swift in Sources */,
 				BC7342BF2E4AE5EF00A24ADE /* SceneDelegate.swift in Sources */,
 				BC7342E42E4B427900A24ADE /* ProductDetail.swift in Sources */,
 				BC7342E22E4B3EA300A24ADE /* Product.swift in Sources */,
+				BC7342FD2E4B56C800A24ADE /* ProductListResponseDTO.swift in Sources */,
 				BC7342EC2E4B4D4600A24ADE /* SearchProductsUseCase.swift in Sources */,
+				BC7342FF2E4B587400A24ADE /* ProductDetailDTO.swift in Sources */,
+				BC7343152E4B7B6A00A24ADE /* APIConstant.swift in Sources */,
+				BC7343082E4B62F500A24ADE /* NetworkService.swift in Sources */,
+				BC7343062E4B608C00A24ADE /* ProductAPI.swift in Sources */,
 				BC7342EA2E4B479300A24ADE /* ProductRepositoryProtocol.swift in Sources */,
 				BC7342C02E4AE5EF00A24ADE /* ViewController.swift in Sources */,
 				BC7342C12E4AE5EF00A24ADE /* AppDelegate.swift in Sources */,
