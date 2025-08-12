@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BC7342BF2E4AE5EF00A24ADE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342BD2E4AE5EF00A24ADE /* SceneDelegate.swift */; };
+		BC7342C02E4AE5EF00A24ADE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342BE2E4AE5EF00A24ADE /* ViewController.swift */; };
+		BC7342C12E4AE5EF00A24ADE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7342BA2E4AE5EF00A24ADE /* AppDelegate.swift */; };
+		BC7342C32E4AE5EF00A24ADE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7342BB2E4AE5EF00A24ADE /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BCFC37982E4A0387009A03D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,30 +31,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC7342BA2E4AE5EF00A24ADE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BC7342BB2E4AE5EF00A24ADE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC7342BC2E4AE5EF00A24ADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC7342BD2E4AE5EF00A24ADE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BC7342BE2E4AE5EF00A24ADE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BCFC37A92E4A0387009A03D0 /* Exceptions for "CaloLink" folder in "CaloLink" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = BCFC37802E4A0385009A03D0 /* CaloLink */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		BCFC37832E4A0385009A03D0 /* CaloLink */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BCFC37A92E4A0387009A03D0 /* Exceptions for "CaloLink" folder in "CaloLink" target */,
-			);
-			path = CaloLink;
-			sourceTree = "<group>";
-		};
 		BCFC379A2E4A0387009A03D0 /* CaloLinkTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = CaloLinkTests;
@@ -85,10 +79,198 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC7342CA2E4AF8DD00A24ADE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342CC2E4AF90300A24ADE /* Application */,
+				BC7342CD2E4AF92C00A24ADE /* Data */,
+				BC7342CE2E4AF93200A24ADE /* Domain */,
+				BC7342CF2E4AF93700A24ADE /* Presentation */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		BC7342CB2E4AF8E600A24ADE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342BB2E4AE5EF00A24ADE /* Assets.xcassets */,
+				BC7342BC2E4AE5EF00A24ADE /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		BC7342CC2E4AF90300A24ADE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342BA2E4AE5EF00A24ADE /* AppDelegate.swift */,
+				BC7342BD2E4AE5EF00A24ADE /* SceneDelegate.swift */,
+				BC7342BE2E4AE5EF00A24ADE /* ViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		BC7342CD2E4AF92C00A24ADE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342E02E4AF9D800A24ADE /* Network */,
+				BC7342DF2E4AF9CF00A24ADE /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		BC7342CE2E4AF93200A24ADE /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342DE2E4AF9BE00A24ADE /* Entity */,
+				BC7342DD2E4AF9B700A24ADE /* RepositoryProtocol */,
+				BC7342DC2E4AF9AE00A24ADE /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		BC7342CF2E4AF93700A24ADE /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342D32E4AF96E00A24ADE /* MainScene */,
+				BC7342D22E4AF96800A24ADE /* SearchScene */,
+				BC7342D12E4AF96100A24ADE /* ListScene */,
+				BC7342D02E4AF95C00A24ADE /* DetailScene */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		BC7342D02E4AF95C00A24ADE /* DetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342DB2E4AF9A100A24ADE /* View */,
+				BC7342DA2E4AF99D00A24ADE /* ViewModel */,
+			);
+			path = DetailScene;
+			sourceTree = "<group>";
+		};
+		BC7342D12E4AF96100A24ADE /* ListScene */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342D92E4AF99900A24ADE /* View */,
+				BC7342D82E4AF99500A24ADE /* ViewModel */,
+			);
+			path = ListScene;
+			sourceTree = "<group>";
+		};
+		BC7342D22E4AF96800A24ADE /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342D72E4AF99200A24ADE /* View */,
+				BC7342D62E4AF98E00A24ADE /* ViewModel */,
+			);
+			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		BC7342D32E4AF96E00A24ADE /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				BC7342D52E4AF98A00A24ADE /* View */,
+				BC7342D42E4AF98600A24ADE /* ViewModel */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		BC7342D42E4AF98600A24ADE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BC7342D52E4AF98A00A24ADE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC7342D62E4AF98E00A24ADE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BC7342D72E4AF99200A24ADE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC7342D82E4AF99500A24ADE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BC7342D92E4AF99900A24ADE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC7342DA2E4AF99D00A24ADE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BC7342DB2E4AF9A100A24ADE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC7342DC2E4AF9AE00A24ADE /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		BC7342DD2E4AF9B700A24ADE /* RepositoryProtocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RepositoryProtocol;
+			sourceTree = "<group>";
+		};
+		BC7342DE2E4AF9BE00A24ADE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		BC7342DF2E4AF9CF00A24ADE /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		BC7342E02E4AF9D800A24ADE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		BCFC37782E4A0385009A03D0 = {
 			isa = PBXGroup;
 			children = (
-				BCFC37832E4A0385009A03D0 /* CaloLink */,
+				BC7342CB2E4AF8E600A24ADE /* Resource */,
+				BC7342CA2E4AF8DD00A24ADE /* Source */,
 				BCFC379A2E4A0387009A03D0 /* CaloLinkTests */,
 				BCFC37A42E4A0387009A03D0 /* CaloLinkUITests */,
 				BCFC37822E4A0385009A03D0 /* Products */,
@@ -119,9 +301,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				BCFC37832E4A0385009A03D0 /* CaloLink */,
 			);
 			name = CaloLink;
 			packageProductDependencies = (
@@ -225,6 +404,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7342C32E4AE5EF00A24ADE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +429,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC7342BF2E4AE5EF00A24ADE /* SceneDelegate.swift in Sources */,
+				BC7342C02E4AE5EF00A24ADE /* ViewController.swift in Sources */,
+				BC7342C12E4AE5EF00A24ADE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +474,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UKSP7K2F4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CaloLink/Info.plist;
+				INFOPLIST_FILE = Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -319,7 +502,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4UKSP7K2F4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CaloLink/Info.plist;
+				INFOPLIST_FILE = Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

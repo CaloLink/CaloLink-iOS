@@ -43,8 +43,10 @@
 
 ## 학습정리
 
-- 아키텍처 선택
-- 등등..
+- [워크플로우](https://velog.io/@ksnughnu/CaloLink-워크플로우)
+- [스토리보드 삭제](https://velog.io/@ksnughnu/CaloLink-스토리보드-삭제)
+- [아키텍처 선택](https://velog.io/@ksnughnu/CaloLink-아키텍처-선택)
+- [전체 구조](https://velog.io/@ksnughnu/CaloLink-전체-구조)
 
 ## 팀원
 
