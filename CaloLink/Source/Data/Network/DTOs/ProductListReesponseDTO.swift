@@ -12,7 +12,7 @@ import Foundation
 // 상품 배열 외에 페이징 정보 등을 함께 받음
 struct ProductListResponseDTO: Decodable {
     let products: [ProductDTO]
-    let totalPage: Int
+    let totalPages: Int
     let currentPage: Int
 }
 

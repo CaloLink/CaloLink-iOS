@@ -28,6 +28,7 @@ struct ProductDetailDTO: Decodable {
 }
 
 // MARK: - NutritionInfoDTO
+// 서버로부터 받는 "상세 영양성분" 데이터 모델
 struct NutritionInfoDTO: Decodable {
     let totalSize: Double?
     let calories: Double?
@@ -57,6 +58,7 @@ struct NutritionInfoDTO: Decodable {
 }
 
 // MARK: - NutrientValueDTO
+// 서버로부터 받는 "개별 영양성분 값" 데이터 모델
 struct NutrientValueDTO: Decodable {
     let amount: Double?
     let unit: String
@@ -81,7 +83,7 @@ struct ShopLinkDTO: Decodable {
         return ShopLink(
             mallName: self.mallName,
             price: self.price,
-            linkURL: URL(string: self.linkURL) ?? URL(filePath: "")
+            linkURL: URL(string: self.linkURL)
         )
     }
 }
