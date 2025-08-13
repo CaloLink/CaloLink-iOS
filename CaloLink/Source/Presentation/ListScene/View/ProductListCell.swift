@@ -71,7 +71,7 @@ final class ProductListCell: UITableViewCell {
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
         )
 
-        // 이미지 비동기 로드
+        // TODO: - 비동기, 이미지 로드 개선
         if let imageURL = product.imageURL {
             self.productImageView.image = placeholderImage
 

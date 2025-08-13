@@ -39,6 +39,9 @@ final class DetailViewModel {
     // ViewModel의 상태가 변경될 때마다 호출될 클로저
     var onUpdate: (() -> Void)?
 
+    // 에러 발생 시 에러 메시지와 함께 얼럿을 띄우도록 요청하는 클로저
+    var onShowErrorAlert: ((String) -> Void)?
+
     // MARK: - Initializer
     init(
         productId: String,
@@ -70,7 +73,8 @@ final class DetailViewModel {
                     self?.onUpdate?()
                 case .failure(let error):
                     self?.error = error
-                    // TODO: - 얼럿 추가?
+                    // 에러가 발생하면 에러 메시지와 함께 얼럿을 띄우도록 View에 요청
+                    self?.onShowErrorAlert?(error.localizedDescription)
                 }
             }
         }
