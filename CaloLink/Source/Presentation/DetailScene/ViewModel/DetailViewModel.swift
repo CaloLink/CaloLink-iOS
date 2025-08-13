@@ -70,6 +70,7 @@ final class DetailViewModel {
                     self?.onUpdate?()
                 case .failure(let error):
                     self?.error = error
+                    // TODO: - 얼럿 추가?
                 }
             }
         }
