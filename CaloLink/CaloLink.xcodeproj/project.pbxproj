@@ -27,6 +27,10 @@
 		BC7343152E4B7B6A00A24ADE /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343142E4B7B6300A24ADE /* APIConstant.swift */; };
 		BC7343232E4C0CF400A24ADE /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343222E4C0CEF00A24ADE /* DIContainer.swift */; };
 		BC7343252E4C120C00A24ADE /* MockProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343242E4C120300A24ADE /* MockProductRepository.swift */; };
+		BC7343332E4C2D1600A24ADE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343322E4C2D0F00A24ADE /* DetailViewController.swift */; };
+		BC7343352E4C2D9300A24ADE /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343342E4C2D9000A24ADE /* DetailViewModel.swift */; };
+		BC7343372E4C2DA400A24ADE /* ProductNutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343362E4C2D9B00A24ADE /* ProductNutritionView.swift */; };
+		BC73433A2E4C2DAE00A24ADE /* ProductPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343392E4C2DAB00A24ADE /* ProductPriceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,10 @@
 		BC7343142E4B7B6300A24ADE /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 		BC7343222E4C0CEF00A24ADE /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		BC7343242E4C120300A24ADE /* MockProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductRepository.swift; sourceTree = "<group>"; };
+		BC7343322E4C2D0F00A24ADE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		BC7343342E4C2D9000A24ADE /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		BC7343362E4C2D9B00A24ADE /* ProductNutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNutritionView.swift; sourceTree = "<group>"; };
+		BC7343392E4C2DAB00A24ADE /* ProductPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPriceView.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +261,7 @@
 		BC7342DA2E4AF99D00A24ADE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BC7343342E4C2D9000A24ADE /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -260,6 +269,9 @@
 		BC7342DB2E4AF9A100A24ADE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC7343392E4C2DAB00A24ADE /* ProductPriceView.swift */,
+				BC7343362E4C2D9B00A24ADE /* ProductNutritionView.swift */,
+				BC7343322E4C2D0F00A24ADE /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -516,6 +528,8 @@
 				BC7343012E4B5BC100A24ADE /* Endpoint.swift in Sources */,
 				BC7342BF2E4AE5EF00A24ADE /* SceneDelegate.swift in Sources */,
 				BC7342E42E4B427900A24ADE /* ProductDetail.swift in Sources */,
+				BC7343372E4C2DA400A24ADE /* ProductNutritionView.swift in Sources */,
+				BC7343332E4C2D1600A24ADE /* DetailViewController.swift in Sources */,
 				BC7342E22E4B3EA300A24ADE /* Product.swift in Sources */,
 				BC7342FD2E4B56C800A24ADE /* ProductListResponseDTO.swift in Sources */,
 				BC7342EC2E4B4D4600A24ADE /* SearchProductsUseCase.swift in Sources */,
@@ -523,7 +537,9 @@
 				BC7343152E4B7B6A00A24ADE /* APIConstant.swift in Sources */,
 				BC7343082E4B62F500A24ADE /* NetworkService.swift in Sources */,
 				BC7343062E4B608C00A24ADE /* ProductAPI.swift in Sources */,
+				BC73433A2E4C2DAE00A24ADE /* ProductPriceView.swift in Sources */,
 				BC7342EA2E4B479300A24ADE /* ProductRepositoryProtocol.swift in Sources */,
+				BC7343352E4C2D9300A24ADE /* DetailViewModel.swift in Sources */,
 				BC7343252E4C120C00A24ADE /* MockProductRepository.swift in Sources */,
 				BC7342C02E4AE5EF00A24ADE /* ViewController.swift in Sources */,
 				BC7343232E4C0CF400A24ADE /* DIContainer.swift in Sources */,

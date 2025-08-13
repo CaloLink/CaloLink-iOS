@@ -38,7 +38,7 @@ final class DIContainer {
         // "makeListViewModel" 조립 라인을 호출하여 새로운 ViewModel을 만들고 주입
         return ListViewController(viewModel: makeListViewModel())
     }
-
+ */
     // MARK: - 상품 상세 Scene
     // DetailViewModel을 생성하는 팩토리 메서드
     func makeDetailViewModel(productId: String) -> DetailViewModel {
@@ -52,5 +52,4 @@ final class DIContainer {
     func makeDetailViewController(productId: String) -> DetailViewController {
         return DetailViewController(viewModel: makeDetailViewModel(productId: productId))
     }
-*/
 }
