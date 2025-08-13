@@ -151,14 +151,14 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let product = viewModel.products[indexPath.row]
-        cell.configure(with: product)
+        cell.updateContents(with: product)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedProduct = viewModel.products[indexPath.row]
-        
+
         let detailVC = diContainer.makeDetailViewController(productId: selectedProduct.id)
         navigationController?.pushViewController(detailVC, animated: true)
     }
