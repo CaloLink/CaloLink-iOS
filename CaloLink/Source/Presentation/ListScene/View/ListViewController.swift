@@ -10,10 +10,12 @@ import UIKit
 // MARK: - ListViewController
 final class ListViewController: UIViewController {
     // MARK: - 프로퍼티
-    private let viewModel: ListViewModel
+    let viewModel: ListViewModel
     private let diContainer: DIContainer
 
     // MARK: - UI Components
+    private let searchController = UISearchController(searchResultsController: nil)
+
     private let filterButton: UIButton = {
         var config = UIButton.Configuration.plain()
         config.image = UIImage(systemName: "line.3.horizontal.decrease")
@@ -73,9 +75,15 @@ final class ListViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupTableView()
+        setupSearchController()
         bindViewModel()
+    }
 
-        viewModel.fetchProducts(with: .default)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // 검색창을 활성화하여 Large Title을 접고 바로 키보드를 내림
+        self.navigationItem.searchController?.isActive = true
+        self.navigationItem.searchController?.searchBar.resignFirstResponder()
     }
 }
 
@@ -83,7 +91,6 @@ final class ListViewController: UIViewController {
 private extension ListViewController {
     func setupUI() {
         view.backgroundColor = .white
-        navigationItem.title = "검색 결과" // TODO: 실제 검색어로 변경
 
         let filterStackView = UIStackView(arrangedSubviews: [filterButton, UIView(), sortButton])
         filterStackView.axis = .horizontal
@@ -111,6 +118,25 @@ private extension ListViewController {
 
 // MARK: - Private 메서드
 private extension ListViewController {
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+
+    // 내비게이션 바에 SearchController를 설정
+    func setupSearchController() {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "다른 상품 검색하기"
+
+        // ViewModel이 기억하고 있는 검색어로 SearchBar 텍스트를 설정
+        searchController.searchBar.text = viewModel.currentQuery?.searchText
+    }
+
     func bindViewModel() {
         viewModel.onUpdate = { [weak self] in
             guard let self = self else { return }
@@ -132,10 +158,23 @@ private extension ListViewController {
             self?.present(alert, animated: true)
         }
     }
+}
 
-    func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
+// MARK: - UISearchBarDelegate
+extension ListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text, !searchText.isEmpty else { return }
+
+        // 새로운 ListViewController를 push
+        let query = SearchQuery(searchText: searchText,
+                                  sortOption: .defaultOrder,
+                                  filterOption: .default,
+                                  page: 1)
+
+        let newListVC = self.diContainer.makeListViewController()
+        newListVC.viewModel.fetchProducts(with: query)
+
+        self.navigationController?.pushViewController(newListVC, animated: true)
     }
 }
 

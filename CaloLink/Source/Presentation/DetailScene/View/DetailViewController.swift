@@ -60,6 +60,7 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupNavigationBar()
         bindViewModel()
         viewModel.viewDidLoad() // ViewModel에 화면이 로드되었음을 알림
     }
@@ -134,6 +135,13 @@ private extension DetailViewController {
         productPriceView.isHidden = isNutritionSelected
     }
 
+    // 내비게이션 바를 설정
+    func setupNavigationBar() {
+        // 기본 뒤로가기 버튼의 텍스트를 숨김
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = .black
+    }
+
     // ViewModel의 상태 변화를 구독하고 UI를 업데이트
     func bindViewModel() {
         viewModel.onUpdate = { [weak self] in
@@ -144,7 +152,7 @@ private extension DetailViewController {
             } else {
                 self.activityIndicator.stopAnimating()
             }
-            
+
             // ViewModel의 상태가 변경되면 UI를 업데이트
             self.updateUI()
         }
