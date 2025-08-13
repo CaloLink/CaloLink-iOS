@@ -165,15 +165,16 @@ extension ListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
 
-        // 새로운 화면으로 push하는 대신 현재 ViewModel의 데이터를 새로고침
-        let newQuery = SearchQuery(searchText: searchText,
-                                     sortOption: .defaultOrder,
-                                     filterOption: .default,
-                                     page: 1)
-        viewModel.fetchProducts(with: newQuery)
+        // 새로운 ListViewController를 push
+        let query = SearchQuery(searchText: searchText,
+                                  sortOption: .defaultOrder,
+                                  filterOption: .default,
+                                  page: 1)
 
-        // 검색 후 키보드를 내림
-        searchController.searchBar.resignFirstResponder()
+        let newListVC = self.diContainer.makeListViewController()
+        newListVC.viewModel.fetchProducts(with: query)
+
+        self.navigationController?.pushViewController(newListVC, animated: true)
     }
 }
 

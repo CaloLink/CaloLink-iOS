@@ -152,7 +152,7 @@ private extension DetailViewController {
             } else {
                 self.activityIndicator.stopAnimating()
             }
-            
+
             // ViewModel의 상태가 변경되면 UI를 업데이트
             self.updateUI()
         }
