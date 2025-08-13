@@ -24,6 +24,9 @@ final class ListViewModel {
     // 에러 발생 시 에러 메시지와 함께 얼럿을 띄우도록 요청하는 클로저
     var onShowErrorAlert: ((String) -> Void)?
 
+    // 현재 화면에 표시 중인 데이터의 검색 쿼리
+    private(set) var currentQuery: SearchQuery?
+ 
     // MARK: - Initializer
     init(searchProductsUseCase: SearchProductsUseCaseProtocol) {
         self.searchProductsUseCase = searchProductsUseCase
@@ -32,6 +35,7 @@ final class ListViewModel {
     // MARK: - 메서드
     // 검색 쿼리로 상품 목록을 가져옴
     func fetchProducts(with query: SearchQuery) {
+        self.currentQuery = query
         self.isLoading = true
 
         searchProductsUseCase.execute(query: query) { [weak self] result in

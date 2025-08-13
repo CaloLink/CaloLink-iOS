@@ -70,7 +70,7 @@ private extension SearchViewController {
     // 내비게이션바에 SearchController를 설정
     func setupSearchController() {
         self.navigationItem.searchController = searchController
-        self.navigationItem.title = "상품 검색"
+        self.navigationItem.title = "검색"
         // 스크롤 시에도 검색창이 항상 보이도록 설정
         self.navigationItem.hidesSearchBarWhenScrolling = false
 
