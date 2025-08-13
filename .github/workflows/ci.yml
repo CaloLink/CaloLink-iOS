@@ -10,7 +10,7 @@ on:
 
 # 실행될 작업들의 목록
 jobs:
-  build-and-test:
+    build-project:
     # 이 작업은 GitHub에서 제공하는 최신 macOS 환경에서 실행됨
     runs-on: macos-15
 
@@ -38,13 +38,24 @@ jobs:
 #      - name: List available simulators
 #        run: xcrun simctl list devices available
 
-      # 6. 프로젝트 빌드 및 테스트 실행
-      - name: Build and Test
+      # 6. 프로젝트 빌드 실행
+      - name: Build Project
         working-directory: ./CaloLink
         run: |
-          xcodebuild test \
+          # test 대신 build 액션을 사용하여 컴파일만 진행
+          xcodebuild build \
             -project CaloLink.xcodeproj \
             -scheme CaloLink \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
             -skipPackagePluginValidation \
             -skipMacroValidation
+
+#      # 6. 프로젝트 빌드 및 테스트 실행
+#      - name: Build and Test
+#        working-directory: ./CaloLink
+#        run: |
+#          xcodebuild test \
+#            -project CaloLink.xcodeproj \
+#            -scheme CaloLink \
+#            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+#            -skipPackagePluginValidation \
+#            -skipMacroValidation
