@@ -14,8 +14,20 @@ final class DetailViewModel {
     private let getProductDetailUseCase: GetProductDetailUseCaseProtocol
 
     // MARK: - Output to ViewController
-    // View에 전달할 데이터 및 상태
-    private(set) var productDetail: ProductDetail?
+    // UseCase로부터 받은 원본 데이터
+    private var productDetail: ProductDetail?
+
+    // View는 아래의 가공된 데이터들을 사용
+    var productName: String? { productDetail?.name }
+    var imageURL: URL? { productDetail?.imageURL }
+    var nutritionInfo: NutritionInfo? { productDetail?.nutritionInfo }
+
+    // 가격이 낮은 순으로 정렬된 쇼핑몰 링크 배열
+    var sortedShopLinks: [ShopLink] {
+        // 원본 shopLinks를 가격 오름차순으로 정렬하여 반환
+        return productDetail?.shopLinks.sorted { $0.price < $1.price } ?? []
+    }
+
     private(set) var isLoading: Bool = false {
         didSet {
             // 로딩 상태가 변경되면 View에 알림
@@ -52,12 +64,12 @@ final class DetailViewModel {
                 self?.isLoading = false
                 switch result {
                 case .success(let detail):
+                    // 원본 데이터를 저장하고, View에 업데이트 신호를 보냄
                     self?.productDetail = detail
                     // 데이터가 성공적으로 로드되었음을 View에 알림
                     self?.onUpdate?()
                 case .failure(let error):
                     self?.error = error
-                    // 에러가 발생했음을 View에 알림
                 }
             }
         }

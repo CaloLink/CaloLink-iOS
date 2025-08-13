@@ -81,7 +81,16 @@ final class MockProductRepository: ProductRepositoryProtocol {
                 shopLinks: [
                     ShopLink(mallName: "쿠팡", price: 2500, linkURL: URL(string: "https://coupang.com")),
                     ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
-                    ShopLink(mallName: "마켓컬리", price: 2600, linkURL: URL(string: "https://kurly.com"))
+                    ShopLink(mallName: "마켓컬리", price: 2600, linkURL: URL(string: "https://kurly.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com")),
+                    ShopLink(mallName: "네이버쇼핑", price: 2400, linkURL: URL(string: "https://shopping.naver.com"))
                 ]
             )
 
