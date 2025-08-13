@@ -47,6 +47,86 @@ final class MockProductRepository: ProductRepositoryProtocol {
                         KeyNutrient(name: "나트륨", value: "250mg"),
                         KeyNutrient(name: "탄수화물", value: "50g")
                     ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P002",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: nil, // 이미지가 없는 경우 테스트
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
                 )
             ]
 

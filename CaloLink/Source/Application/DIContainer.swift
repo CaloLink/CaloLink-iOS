@@ -23,7 +23,6 @@ final class DIContainer {
     lazy var searchProductsUseCase: SearchProductsUseCaseProtocol = SearchProductsUseCase(productRepository: productRepository)
     lazy var getProductDetailUseCase: GetProductDetailUseCaseProtocol = GetProductDetailUseCase(productRepository: productRepository)
 
-/*
     // MARK: - 조립 라인 (Factory Methods)
 
     // MARK: - 검색 결과 목록 Scene
@@ -35,10 +34,14 @@ final class DIContainer {
 
     // ListViewController를 생성하는 팩토리 메서드
     func makeListViewController() -> ListViewController {
-        // "makeListViewModel" 조립 라인을 호출하여 새로운 ViewModel을 만들고 주입
-        return ListViewController(viewModel: makeListViewModel())
+        // "makeListViewModel"을 호출하여 ViewModel을 만들고,
+        // diContainer 자기 자신(self)도 함께 주입
+        return ListViewController(
+            viewModel: makeListViewModel(),
+            diContainer: self
+        )
     }
- */
+
     // MARK: - 상품 상세 Scene
     // DetailViewModel을 생성하는 팩토리 메서드
     func makeDetailViewModel(productId: String) -> DetailViewModel {
@@ -50,6 +53,8 @@ final class DIContainer {
 
     // DetailViewController를 생성하는 팩토리 메서드
     func makeDetailViewController(productId: String) -> DetailViewController {
-        return DetailViewController(viewModel: makeDetailViewModel(productId: productId))
+        return DetailViewController(
+            viewModel: makeDetailViewModel(productId: productId)
+        )
     }
 }
