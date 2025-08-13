@@ -43,11 +43,13 @@ jobs:
         working-directory: ./CaloLink
         run: |
           # test 대신 build 액션을 사용하여 컴파일만 진행
+          # CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO 옵션으로 코드 서명을 비활성화
           xcodebuild build \
             -project CaloLink.xcodeproj \
             -scheme CaloLink \
             -skipPackagePluginValidation \
-            -skipMacroValidation
+            -skipMacroValidation \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
 #      # 6. 프로젝트 빌드 및 테스트 실행
 #      - name: Build and Test (Inactive)
@@ -60,4 +62,5 @@ jobs:
 #          #   -scheme CaloLink \
 #          #   -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
 #          #   -skipPackagePluginValidation \
-#          #   -skipMacroValidation
+#          #   -skipMacroValidation \
+#          #   CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
