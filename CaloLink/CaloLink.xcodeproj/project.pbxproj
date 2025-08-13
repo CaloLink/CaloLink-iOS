@@ -25,6 +25,8 @@
 		BC7343082E4B62F500A24ADE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343072E4B62EF00A24ADE /* NetworkService.swift */; };
 		BC73430A2E4B635400A24ADE /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343092E4B634900A24ADE /* NetworkError.swift */; };
 		BC7343152E4B7B6A00A24ADE /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343142E4B7B6300A24ADE /* APIConstant.swift */; };
+		BC7343232E4C0CF400A24ADE /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343222E4C0CEF00A24ADE /* DIContainer.swift */; };
+		BC7343252E4C120C00A24ADE /* MockProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343242E4C120300A24ADE /* MockProductRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		BC7343072E4B62EF00A24ADE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		BC7343092E4B634900A24ADE /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		BC7343142E4B7B6300A24ADE /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
+		BC7343222E4C0CEF00A24ADE /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		BC7343242E4C120300A24ADE /* MockProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductRepository.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +134,7 @@
 		BC7342CC2E4AF90300A24ADE /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				BC7343222E4C0CEF00A24ADE /* DIContainer.swift */,
 				BC7342BA2E4AE5EF00A24ADE /* AppDelegate.swift */,
 				BC7342BD2E4AE5EF00A24ADE /* SceneDelegate.swift */,
 				BC7342BE2E4AE5EF00A24ADE /* ViewController.swift */,
@@ -290,6 +295,7 @@
 		BC7342DF2E4AF9CF00A24ADE /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				BC7343242E4C120300A24ADE /* MockProductRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -518,7 +524,9 @@
 				BC7343082E4B62F500A24ADE /* NetworkService.swift in Sources */,
 				BC7343062E4B608C00A24ADE /* ProductAPI.swift in Sources */,
 				BC7342EA2E4B479300A24ADE /* ProductRepositoryProtocol.swift in Sources */,
+				BC7343252E4C120C00A24ADE /* MockProductRepository.swift in Sources */,
 				BC7342C02E4AE5EF00A24ADE /* ViewController.swift in Sources */,
+				BC7343232E4C0CF400A24ADE /* DIContainer.swift in Sources */,
 				BC7342C12E4AE5EF00A24ADE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
