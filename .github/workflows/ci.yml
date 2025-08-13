@@ -10,7 +10,7 @@ on:
 
 # 실행될 작업들의 목록
 jobs:
-    build-project:
+  build-project:
     # 이 작업은 GitHub에서 제공하는 최신 macOS 환경에서 실행됨
     runs-on: macos-15
 
@@ -50,12 +50,14 @@ jobs:
             -skipMacroValidation
 
 #      # 6. 프로젝트 빌드 및 테스트 실행
-#      - name: Build and Test
+#      - name: Build and Test (Inactive)
+#        if: false # 이 단계를 실행하지 않도록 설정
 #        working-directory: ./CaloLink
 #        run: |
-#          xcodebuild test \
-#            -project CaloLink.xcodeproj \
-#            -scheme CaloLink \
-#            -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
-#            -skipPackagePluginValidation \
-#            -skipMacroValidation
+#          # 나중에 테스트 코드를 추가하면 아래 주석을 해제하고 위 'Build Project' 단계를 주석 처리하세요.
+#          # xcodebuild test \
+#          #   -project CaloLink.xcodeproj \
+#          #   -scheme CaloLink \
+#          #   -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' \
+#          #   -skipPackagePluginValidation \
+#          #   -skipMacroValidation
