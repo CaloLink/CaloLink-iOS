@@ -10,7 +10,7 @@ import UIKit
 // MARK: - ListViewController
 final class ListViewController: UIViewController {
     // MARK: - 프로퍼티
-    private let viewModel: ListViewModel
+    let viewModel: ListViewModel
     private let diContainer: DIContainer
 
     // MARK: - UI Components

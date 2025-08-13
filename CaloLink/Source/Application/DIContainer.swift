@@ -25,6 +25,21 @@ final class DIContainer {
 
     // MARK: - 조립 라인 (Factory Methods)
 
+    // MARK: - 검색 Scene
+    // SearchViewModel을 생성하는 팩토리 메서드
+    func makeSearchViewModel() -> SearchViewModel {
+        // 지금은 UseCase 의존성이 없으므로 그냥 생성만
+        return SearchViewModel()
+    }
+
+    // SearchViewController를 생성하는 팩토리 메서드
+    func makeSearchViewController() -> SearchViewController {
+        return SearchViewController(
+            viewModel: makeSearchViewModel(),
+            diContainer: self
+        )
+    }
+
     // MARK: - 검색 결과 목록 Scene
     // ListViewModel을 생성하는 팩토리 메서드
     func makeListViewModel() -> ListViewModel {
