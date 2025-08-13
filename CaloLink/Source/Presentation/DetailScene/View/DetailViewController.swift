@@ -148,6 +148,13 @@ private extension DetailViewController {
             // ViewModel의 상태가 변경되면 UI를 업데이트
             self.updateUI()
         }
+
+        viewModel.onShowErrorAlert = { [weak self] message in
+            // UIAlertController를 사용하여 에러 메시지 표시
+            let alert = UIAlertController(title: "에러 발생", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default))
+            self?.present(alert, animated: true)
+        }
     }
 
     // ViewModel로부터 받은 데이터로 UI 컴포넌트를 채움

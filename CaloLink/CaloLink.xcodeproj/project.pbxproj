@@ -31,6 +31,9 @@
 		BC7343352E4C2D9300A24ADE /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343342E4C2D9000A24ADE /* DetailViewModel.swift */; };
 		BC7343372E4C2DA400A24ADE /* ProductNutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343362E4C2D9B00A24ADE /* ProductNutritionView.swift */; };
 		BC73433A2E4C2DAE00A24ADE /* ProductPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7343392E4C2DAB00A24ADE /* ProductPriceView.swift */; };
+		BC88BC172E4C979300F4B556 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC162E4C978D00F4B556 /* ListViewModel.swift */; };
+		BC88BC192E4C996800F4B556 /* ProductListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC182E4C996300F4B556 /* ProductListCell.swift */; };
+		BC88BC1D2E4C9A7700F4B556 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC1C2E4C9A6F00F4B556 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		BC7343342E4C2D9000A24ADE /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		BC7343362E4C2D9B00A24ADE /* ProductNutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductNutritionView.swift; sourceTree = "<group>"; };
 		BC7343392E4C2DAB00A24ADE /* ProductPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPriceView.swift; sourceTree = "<group>"; };
+		BC88BC162E4C978D00F4B556 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		BC88BC182E4C996300F4B556 /* ProductListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCell.swift; sourceTree = "<group>"; };
+		BC88BC1C2E4C9A6F00F4B556 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +253,7 @@
 		BC7342D82E4AF99500A24ADE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BC88BC162E4C978D00F4B556 /* ListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -254,6 +261,8 @@
 		BC7342D92E4AF99900A24ADE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC88BC1C2E4C9A6F00F4B556 /* ListViewController.swift */,
+				BC88BC182E4C996300F4B556 /* ProductListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -530,11 +539,13 @@
 				BC7342E42E4B427900A24ADE /* ProductDetail.swift in Sources */,
 				BC7343372E4C2DA400A24ADE /* ProductNutritionView.swift in Sources */,
 				BC7343332E4C2D1600A24ADE /* DetailViewController.swift in Sources */,
+				BC88BC192E4C996800F4B556 /* ProductListCell.swift in Sources */,
 				BC7342E22E4B3EA300A24ADE /* Product.swift in Sources */,
 				BC7342FD2E4B56C800A24ADE /* ProductListResponseDTO.swift in Sources */,
 				BC7342EC2E4B4D4600A24ADE /* SearchProductsUseCase.swift in Sources */,
 				BC7342FF2E4B587400A24ADE /* ProductDetailDTO.swift in Sources */,
 				BC7343152E4B7B6A00A24ADE /* APIConstant.swift in Sources */,
+				BC88BC172E4C979300F4B556 /* ListViewModel.swift in Sources */,
 				BC7343082E4B62F500A24ADE /* NetworkService.swift in Sources */,
 				BC7343062E4B608C00A24ADE /* ProductAPI.swift in Sources */,
 				BC73433A2E4C2DAE00A24ADE /* ProductPriceView.swift in Sources */,
@@ -543,6 +554,7 @@
 				BC7343252E4C120C00A24ADE /* MockProductRepository.swift in Sources */,
 				BC7342C02E4AE5EF00A24ADE /* ViewController.swift in Sources */,
 				BC7343232E4C0CF400A24ADE /* DIContainer.swift in Sources */,
+				BC88BC1D2E4C9A7700F4B556 /* ListViewController.swift in Sources */,
 				BC7342C12E4AE5EF00A24ADE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

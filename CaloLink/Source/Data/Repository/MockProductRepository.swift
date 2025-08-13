@@ -21,7 +21,7 @@ final class MockProductRepository: ProductRepositoryProtocol {
                 Product(
                     id: "P001",
                     name: "맛있는 닭가슴살 100g (검색어: \(query.searchText))",
-                    imageURL: URL(string: "https://example.com/images/chicken_breast.jpg"),
+                    imageURL: URL(string: "https://picsum.photos/seed/P001/200"),
                     price: 2500,
                     keyNutrients: [
                         KeyNutrient(name: "단백질", value: "25g"),
@@ -41,11 +41,91 @@ final class MockProductRepository: ProductRepositoryProtocol {
                 Product(
                     id: "P003",
                     name: "저염 현미밥 도시락",
-                    imageURL: URL(string: "https://example.com/images/rice_box.jpg"),
+                    imageURL: URL(string: "https://picsum.photos/seed/P003/200"),
                     price: 4500,
                     keyNutrients: [
                         KeyNutrient(name: "나트륨", value: "250mg"),
                         KeyNutrient(name: "탄수화물", value: "50g")
+                    ]
+                ),
+                Product(
+                    id: "P004",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P004/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P005",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P005/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P006",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P006/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P007",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P007/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P008",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P008/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P009",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P009/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P010",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P010/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
+                    ]
+                ),
+                Product(
+                    id: "P011",
+                    name: "고단백 프로틴 쉐이크",
+                    imageURL: URL(string: "https://picsum.photos/seed/P011/200"),
+                    price: 3000,
+                    keyNutrients: [
+                        KeyNutrient(name: "단백질", value: "30g"),
+                        KeyNutrient(name: "당류", value: "2g")
                     ]
                 )
             ]
@@ -65,7 +145,7 @@ final class MockProductRepository: ProductRepositoryProtocol {
             let mockDetail = ProductDetail(
                 id: productId,
                 name: "맛있는 닭가슴살 100g (상세)",
-                imageURL: URL(string: "https://example.com/images/chicken_breast.jpg"),
+                imageURL: URL(string: "https://picsum.photos/seed/\(productId)/400"),
                 nutritionInfo: NutritionInfo(
                     totalSize: 100,
                     calories: 130,

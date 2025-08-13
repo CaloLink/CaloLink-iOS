@@ -11,18 +11,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    let diContainer = DIContainer()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let diContainer = DIContainer()
+        // (임시) ListViewController를 첫 화면으로 설정
+        let listViewController = diContainer.makeListViewController()
 
-        // 검증을 위해 임시로 사용
-        // 인스턴스를 통해 팩토리 메서드를 호출하고 테스트할 상품의 ID를 전달
-        // MockRepository에 있는 ID 중 하나인 "P001"을 사용
-        let detailViewController = diContainer.makeDetailViewController(productId: "P001")
-
-        let navigationController = UINavigationController(rootViewController: detailViewController)
+        let navigationController = UINavigationController(rootViewController: listViewController)
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController
