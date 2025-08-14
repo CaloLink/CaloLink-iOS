@@ -16,7 +16,7 @@ final class ListViewController: UIViewController {
     // MARK: - UI Components
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private let filterButton: UIButton = {
+    private lazy var filterButton: UIButton = {
         var config = UIButton.Configuration.plain()
         config.image = UIImage(systemName: "line.3.horizontal.decrease")
         config.title = "필터"
@@ -27,6 +27,7 @@ final class ListViewController: UIViewController {
         config.background.cornerRadius = 8
         config.contentInsets = .init(top: 8, leading: 12, bottom: 8, trailing: 12)
         let button = UIButton(configuration: config)
+        button.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
         return button
     }()
 
@@ -187,20 +188,43 @@ private extension ListViewController {
         // SortVC에서 정렬 옵션이 선택되면 실행될 클로저를 설정
         sortVC.onSortOptionSelected = { [weak self] newSortOption in
             guard let self = self else { return }
-            
+
             // 버튼의 타이틀을 새로운 정렬 옵션 이름으로 변경
             self.sortButton.setTitle(sortVM.displayName(for: newSortOption), for: .normal)
-            
+
             // ViewModel에게 정렬 옵션 변경을 요청
             self.viewModel.applySortOption(newSortOption)
         }
-        
+
         // 모달(Sheet) 형태로 화면을 띄움
         if let sheet = sortVC.sheetPresentationController {
             sheet.detents = [.medium()] // 시트 높이 설정
             sheet.prefersGrabberVisible = true
         }
         present(sortVC, animated: true)
+    }
+
+    // 필터 버튼 탭 시 호출될 메서드
+    @objc func filterButtonTapped() {
+        // 현재 적용된 필터 옵션으로 FilterViewModel을 생성합니다.
+        let currentFilterOption = viewModel.currentQuery?.filterOption ?? .default
+        let filterVM = FilterViewModel(currentFilterOption: currentFilterOption)
+        let filterVC = FilterViewController(viewModel: filterVM)
+
+        // FilterVC에서 필터 옵션이 선택되면 실행될 클로저를 설정
+        filterVC.onFilterCompleted = { [weak self] newFilterOption in
+            guard let self = self else { return }
+
+            // ViewModel에게 필터 옵션 변경을 요청
+            self.viewModel.applyFilterOption(newFilterOption)
+        }
+
+        // 모달(Sheet) 형태로 화면을 띄움
+        if let sheet = filterVC.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        present(filterVC, animated: true)
     }
 }
 
