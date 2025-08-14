@@ -36,6 +36,8 @@
 		BC88BC1D2E4C9A7700F4B556 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC1C2E4C9A6F00F4B556 /* ListViewController.swift */; };
 		BC88BC2B2E4CC73B00F4B556 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC2A2E4CC73500F4B556 /* SearchViewModel.swift */; };
 		BC88BC2D2E4CC75400F4B556 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC2C2E4CC74F00F4B556 /* SearchViewController.swift */; };
+		BC88BC3B2E4D86AF00F4B556 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC3A2E4D86AA00F4B556 /* MainViewModel.swift */; };
+		BC88BC3D2E4D872000F4B556 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC3C2E4D871B00F4B556 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		BC88BC1C2E4C9A6F00F4B556 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		BC88BC2A2E4CC73500F4B556 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		BC88BC2C2E4CC74F00F4B556 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BC88BC3A2E4D86AA00F4B556 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		BC88BC3C2E4D871B00F4B556 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +233,7 @@
 		BC7342D42E4AF98600A24ADE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				BC88BC3A2E4D86AA00F4B556 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 		BC7342D52E4AF98A00A24ADE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC88BC3C2E4D871B00F4B556 /* MainViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -544,6 +550,8 @@
 				BC7342BF2E4AE5EF00A24ADE /* SceneDelegate.swift in Sources */,
 				BC7342E42E4B427900A24ADE /* ProductDetail.swift in Sources */,
 				BC7343372E4C2DA400A24ADE /* ProductNutritionView.swift in Sources */,
+				BC88BC3B2E4D86AF00F4B556 /* MainViewModel.swift in Sources */,
+				BC88BC3D2E4D872000F4B556 /* MainViewController.swift in Sources */,
 				BC7343332E4C2D1600A24ADE /* DetailViewController.swift in Sources */,
 				BC88BC192E4C996800F4B556 /* ProductListCell.swift in Sources */,
 				BC7342E22E4B3EA300A24ADE /* Product.swift in Sources */,
