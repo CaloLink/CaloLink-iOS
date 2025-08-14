@@ -61,6 +61,17 @@ final class ListViewController: UIViewController {
         return indicator
     }()
 
+    // "검색 결과 없음"을 표시할 UI
+    private let emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "검색 결과가 없습니다."
+        label.textColor = .systemGray
+        label.font = .systemFont(ofSize: 18)
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
+
     // MARK: - Initializer
     init(viewModel: ListViewModel, diContainer: DIContainer) {
         self.viewModel = viewModel
@@ -99,7 +110,7 @@ private extension ListViewController {
         let filterStackView = UIStackView(arrangedSubviews: [filterButton, UIView(), sortButton])
         filterStackView.axis = .horizontal
 
-        [filterStackView, tableView, activityIndicator].forEach {
+        [filterStackView, tableView, emptyStateLabel, activityIndicator].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -113,6 +124,9 @@ private extension ListViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            emptyStateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -157,21 +171,27 @@ private extension ListViewController {
         viewModel.onUpdate = { [weak self] in
             guard let self = self else { return }
 
-            // 로딩 인디케이터 처리
-            if self.viewModel.isLoading {
+            // ViewModel의 state에 따라 UI를 업데이트
+            switch self.viewModel.state {
+            case .loading:
                 self.activityIndicator.startAnimating()
-            } else {
+                self.tableView.isHidden = true
+                self.emptyStateLabel.isHidden = true
+            case .success:
                 self.activityIndicator.stopAnimating()
+                self.tableView.isHidden = false
+                self.emptyStateLabel.isHidden = true
+                self.tableView.reloadData()
+            case .empty:
+                self.activityIndicator.stopAnimating()
+                self.tableView.isHidden = true
+                self.emptyStateLabel.isHidden = false
+            case .error(let error):
+                self.activityIndicator.stopAnimating()
+                self.tableView.isHidden = true
+                self.emptyStateLabel.isHidden = false
+                self.emptyStateLabel.text = "에러 발생: \(error.localizedDescription)"
             }
-
-            self.tableView.reloadData()
-        }
-
-        viewModel.onShowErrorAlert = { [weak self] message in
-            // UIAlertController를 사용하여 에러 메시지 표시
-            let alert = UIAlertController(title: "에러 발생", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "확인", style: .default))
-            self?.present(alert, animated: true)
         }
     }
 
@@ -265,23 +285,34 @@ extension ListViewController: UISearchBarDelegate {
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.products.count
+        // state가 .success일 때만 products의 개수를 반환
+        if case .success(let products) = viewModel.state {
+            return products.count
+        }
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductListCell.identifier, for: indexPath) as? ProductListCell else {
             return UITableViewCell()
         }
-        let product = viewModel.products[indexPath.row]
-        cell.updateContents(with: product)
+
+        // state가 .success일 때만 product 데이터를 가져옴
+        if case .success(let products) = viewModel.state {
+            let product = products[indexPath.row]
+            cell.updateContents(with: product)
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedProduct = viewModel.products[indexPath.row]
 
-        let detailVC = diContainer.makeDetailViewController(productId: selectedProduct.id)
-        navigationController?.pushViewController(detailVC, animated: true)
+        // state가 .success일 때만 화면 전환
+        if case .success(let products) = viewModel.state {
+            let selectedProduct = products[indexPath.row]
+            let detailVC = diContainer.makeDetailViewController(productId: selectedProduct.id)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
