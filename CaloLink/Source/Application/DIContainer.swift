@@ -12,16 +12,21 @@ import Foundation
 final class DIContainer {
     // MARK: - 부품 창고 (Singleton Instances)
 
-    // Services: 네트워크 통신 엔진은 앱 전체에서 하나만 존재
+    // MARK: - Services: 네트워크 통신 엔진은 앱 전체에서 하나만 존재
     lazy var networkService: NetworkServiceProtocol = DefaultNetworkService()
 
-    // Repositories: 데이터 저장소도 하나만 존재
+    // MARK: - Repositories: 데이터 저장소도 하나만 존재
     lazy var productRepository: ProductRepositoryProtocol = MockProductRepository()
 //    lazy var productRepository: ProductRepositoryProtocol = DefaultProductRepository(networkService: networkService)
+    lazy var recentKeywordRepository: RecentKeywordRepositoryProtocol = DefaultRecentKeywordRepository()
 
-    // Use Cases: UseCase는 상태를 가지지 않으므로 하나만 만들어 재사용
-    lazy var searchProductsUseCase: SearchProductsUseCaseProtocol = SearchProductsUseCase(productRepository: productRepository)
+    // MARK: - Use Cases: UseCase는 상태를 가지지 않으므로 하나만 만들어 재사용
+    lazy var searchProductsUseCase: SearchProductsUseCaseProtocol = SearchProductsUseCase(
+        productRepository: productRepository,
+        recentKeywordRepository: recentKeywordRepository
+    )
     lazy var getProductDetailUseCase: GetProductDetailUseCaseProtocol = GetProductDetailUseCase(productRepository: productRepository)
+    lazy var recentKeywordUseCase: RecentKeywordUseCaseProtocol = DefaultRecentKeywordUseCase(repository: recentKeywordRepository)
 
     // MARK: - 조립 라인 (Factory Methods)
     // MARK: - 메인 Scene
@@ -42,8 +47,7 @@ final class DIContainer {
     // MARK: - 검색 Scene
     // SearchViewModel을 생성하는 팩토리 메서드
     func makeSearchViewModel() -> SearchViewModel {
-        // 지금은 UseCase 의존성이 없으므로 그냥 생성만
-        return SearchViewModel()
+        return SearchViewModel(recentKeywordUseCase: recentKeywordUseCase)
     }
 
     // SearchViewController를 생성하는 팩토리 메서드

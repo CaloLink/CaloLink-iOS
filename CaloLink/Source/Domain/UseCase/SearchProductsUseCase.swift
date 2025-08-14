@@ -18,10 +18,15 @@ protocol SearchProductsUseCaseProtocol {
 final class SearchProductsUseCase: SearchProductsUseCaseProtocol {
     // 작업을 전달할 레포지토리 선언
     private let productRepository: ProductRepositoryProtocol
+    private let recentKeywordRepository: RecentKeywordRepositoryProtocol
 
     // 의존성 주입(DI)을 통해 Repository를 받음
-    init(productRepository: ProductRepositoryProtocol) {
+    init(
+        productRepository: ProductRepositoryProtocol,
+        recentKeywordRepository: RecentKeywordRepositoryProtocol
+    ) {
         self.productRepository = productRepository
+        self.recentKeywordRepository = recentKeywordRepository
     }
 
     // UseCase의 핵심 로직을 수행하는 메서드
@@ -29,8 +34,12 @@ final class SearchProductsUseCase: SearchProductsUseCaseProtocol {
         query: SearchQuery,
         completion: @escaping (Result<[Product], Error>) -> Void
     ) {
-        // TODO: - 실제 구현은 Data Layer가 완성된 후 작성
-        // 지금은 Repository에 작업을 그대로 전달하는 역할만 함
+        // 검색을 실행하기전, 검색어를 로컬에 저장
+        if !query.searchText.isEmpty {
+            recentKeywordRepository.saveKeyword(query.searchText)
+        }
+
+        // Repository에 작업을 그대로 전달
         productRepository.fetchProducts(query: query, completion: completion)
     }
 }
