@@ -53,4 +53,28 @@ final class ListViewModel {
             }
         }
     }
+
+    // 새로운 정렬 옵션을 적용하고 데이터를 다시 불러옴
+    func applySortOption(_ newSortOption: SortOption) {
+        // 현재 기억하고 있는 쿼리가 없으면 아무것도 하지 않음
+        guard var query = self.currentQuery else { return }
+
+        // 기존 쿼리에서 정렬 옵션만 변경
+        query.sortOption = newSortOption
+
+        // 변경된 쿼리로 데이터를 다시 요청
+        fetchProducts(with: query)
+    }
+
+    // 새로운 필터 옵션을 적용하고 데이터를 다시 불러옴
+    func applyFilterOption(_ newFilterOption: FilterOption) {
+        // 현재 기억하고 있는 쿼리가 없으면 아무것도 하지 않음
+        guard var query = self.currentQuery else { return }
+
+        // 기존 쿼리에서 필터 옵션만 변경
+        query.filterOption = newFilterOption
+
+        // 변경된 쿼리로 데이터를 다시 요청
+        fetchProducts(with: query)
+    }
 }

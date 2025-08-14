@@ -80,6 +80,7 @@ private extension SearchViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "예) 닭가슴살"
+        searchController.searchBar.autocapitalizationType = .none
 
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "취소"
         searchController.searchBar.tintColor = .black

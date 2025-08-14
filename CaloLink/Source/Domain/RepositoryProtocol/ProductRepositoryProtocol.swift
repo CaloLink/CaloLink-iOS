@@ -26,8 +26,8 @@ protocol ProductRepositoryProtocol {
 // 상품 목록을 검색할 때 필요한 모든 조건을 담는 구조체
 struct SearchQuery {
     let searchText: String              // 검색어
-    let sortOption: SortOption          // 정렬조건
-    let filterOption: FilterOption      // 필터조건
+    var sortOption: SortOption          // 정렬조건
+    var filterOption: FilterOption      // 필터조건
     let page: Int                       // 페이지네이션의 페이지 번호
 
     // 기본값 설정
@@ -38,7 +38,7 @@ struct SearchQuery {
 }
 
 // MARK: - SortOption
-enum SortOption: String {
+enum SortOption: String, CaseIterable {
     case defaultOrder                   // 기본순
     case priceAscending                 // 가격 낮은 순
     case priceDescending                // 가격 높은 순
@@ -47,32 +47,32 @@ enum SortOption: String {
 
 // MARK: - FilterOption
 struct FilterOption {
-    let minCalories: Double?
-    let maxCalories: Double?
+    var minCalories: Double?
+    var maxCalories: Double?
     
-    let minSodium: Double?
-    let maxSodium: Double?
+    var minSodium: Double?
+    var maxSodium: Double?
     
-    let minCarbs: Double?
-    let maxCarbs: Double?
+    var minCarbs: Double?
+    var maxCarbs: Double?
     
-    let minSugars: Double?
-    let maxSugars: Double?
+    var minSugars: Double?
+    var maxSugars: Double?
     
-    let minFat: Double?
-    let maxFat: Double?
+    var minFat: Double?
+    var maxFat: Double?
     
-    let minTransFat: Double?
-    let maxTransFat: Double?
+    var minTransFat: Double?
+    var maxTransFat: Double?
     
-    let minSaturatedFat: Double?
-    let maxSaturatedFat: Double?
+    var minSaturatedFat: Double?
+    var maxSaturatedFat: Double?
     
-    let minCholesterol: Double?
-    let maxCholesterol: Double?
+    var minCholesterol: Double?
+    var maxCholesterol: Double?
     
-    let minProtein: Double?
-    let maxProtein: Double?
+    var minProtein: Double?
+    var maxProtein: Double?
 
     static let `default` = FilterOption(
         minCalories: nil, maxCalories: nil,
