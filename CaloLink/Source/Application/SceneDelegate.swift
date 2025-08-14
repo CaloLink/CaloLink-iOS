@@ -16,10 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        // (임시) SearchViewController를 첫 화면으로 설정
-        let searchViewController = diContainer.makeSearchViewController()
+        // MainViewController를 첫 화면으로 설정
+        let mainViewController = diContainer.makeMainViewController()
 
-        let navigationController = UINavigationController(rootViewController: searchViewController)
+        let navigationController = UINavigationController(rootViewController: mainViewController)
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController
