@@ -9,20 +9,23 @@ import Foundation
 
 // MARK: - ListViewModel
 final class ListViewModel {
+    // View가 알아야 할 모든 상태를 명확하게 정의하는 enum
+    enum State {
+        case loading
+        case success([Product])
+        case empty
+        case error(Error)
+    }
+
     // MARK: - 프로퍼티
     private let searchProductsUseCase: SearchProductsUseCaseProtocol
 
-    private(set) var products: [Product] = []
-    private(set) var isLoading: Bool = false {
+    private(set) var state: State = .loading {
         didSet { self.onUpdate?() }
     }
-    private(set) var error: Error?
 
     // ViewModel의 상태가 변경될 때마다 호출될 클로저
     var onUpdate: (() -> Void)?
-
-    // 에러 발생 시 에러 메시지와 함께 얼럿을 띄우도록 요청하는 클로저
-    var onShowErrorAlert: ((String) -> Void)?
 
     // 현재 화면에 표시 중인 데이터의 검색 쿼리
     private(set) var currentQuery: SearchQuery?
@@ -36,19 +39,19 @@ final class ListViewModel {
     // 검색 쿼리로 상품 목록을 가져옴
     func fetchProducts(with query: SearchQuery) {
         self.currentQuery = query
-        self.isLoading = true
+        self.state = .loading
 
         searchProductsUseCase.execute(query: query) { [weak self] result in
             DispatchQueue.main.async {
-                self?.isLoading = false
                 switch result {
                 case .success(let products):
-                    self?.products = products
-                    self?.onUpdate?()
+                    if products.isEmpty {
+                        self?.state = .empty
+                    } else {
+                        self?.state = .success(products)
+                    }
                 case .failure(let error):
-                    self?.error = error
-                    // 에러가 발생하면 에러 메시지와 함께 얼럿을 띄우도록 View에 요청
-                    self?.onShowErrorAlert?(error.localizedDescription)
+                    self?.state = .error(error)
                 }
             }
         }
