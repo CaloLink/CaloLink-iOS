@@ -60,20 +60,9 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupNavigationBar()
         setupCategoryButtons()
         bindViewModel()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // 다른 화면에 갔다가 돌아왔을 때 내비게이션 바가 숨겨지도록 설정
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // 이 화면을 떠날 때 다시 내비게이션 바가 보이도록 설정
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
@@ -110,6 +99,11 @@ private extension MainViewController {
 
     @objc func searchButtonTapped() {
         viewModel.didTapSearchButton()
+    }
+
+    func setupNavigationBar() {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = .black
     }
 }
 

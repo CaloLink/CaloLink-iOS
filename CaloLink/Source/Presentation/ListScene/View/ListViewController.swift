@@ -126,7 +126,6 @@ private extension ListViewController {
     // 내비게이션 바에 SearchController를 설정
     func setupSearchController() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = .black
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
 
