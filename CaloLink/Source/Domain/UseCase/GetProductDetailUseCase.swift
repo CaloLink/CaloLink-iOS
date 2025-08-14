@@ -29,8 +29,7 @@ final class GetProductDetailUseCase: GetProductDetailUseCaseProtocol {
         productId: String,
         completion: @escaping (Result<ProductDetail, Error>) -> Void
     ) {
-        // TODO: - 실제 구현은 Data Layer가 완성된 후 작성
-        // 지금은 Repository에 작업을 그대로 전달하는 역할만 함
+        // Repository에 작업을 그대로 전달
         productRepository.fetchProductDetail(productId: productId, completion: completion)
     }
 }
