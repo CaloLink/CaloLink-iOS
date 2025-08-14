@@ -60,6 +60,7 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupNavigationBar()
         bindViewModel()
         viewModel.viewDidLoad() // ViewModel에 화면이 로드되었음을 알림
     }
@@ -132,6 +133,22 @@ private extension DetailViewController {
         let isNutritionSelected = productInfoSegmentedControl.selectedSegmentIndex == 0
         productNutritionView.isHidden = !isNutritionSelected
         productPriceView.isHidden = isNutritionSelected
+    }
+
+    // 내비게이션바 설정
+    func setupNavigationBar() {
+        // 홈 버튼을 생성하고 오른쪽에 추가
+        let homeButton = UIBarButtonItem(
+            image: UIImage(systemName: "house"),
+            style: .plain,
+            target: self,
+            action: #selector(homeButtonTapped)
+        )
+        self.navigationItem.rightBarButtonItem = homeButton
+    }
+
+    @objc private func homeButtonTapped() {
+        navigationController?.popToRootViewController(animated: true)
     }
 
     // ViewModel의 상태 변화를 구독하고 UI를 업데이트

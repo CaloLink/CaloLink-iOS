@@ -76,6 +76,7 @@ final class ListViewController: UIViewController {
         setupUI()
         setupTableView()
         setupSearchController()
+        setupNavigationBar()
         setupGestureRecognizers()
         bindViewModel()
     }
@@ -124,6 +125,17 @@ private extension ListViewController {
         tableView.delegate = self
     }
 
+    // 내비게이션 바의 오른쪽 버튼(홈 버튼) 설정
+    func setupNavigationBar() {
+        let homeButton = UIBarButtonItem(
+            image: UIImage(systemName: "house"),
+            style: .plain,
+            target: self,
+            action: #selector(homeButtonTapped)
+        )
+        self.navigationItem.rightBarButtonItem = homeButton
+    }
+
     // 내비게이션 바에 SearchController를 설정
     func setupSearchController() {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -158,6 +170,10 @@ private extension ListViewController {
             alert.addAction(UIAlertAction(title: "확인", style: .default))
             self?.present(alert, animated: true)
         }
+    }
+
+    @objc func homeButtonTapped() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }
 
