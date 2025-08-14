@@ -74,13 +74,14 @@ private extension SearchViewController {
     func setupSearchController() {
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "검색"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         // 스크롤 시에도 검색창이 항상 보이도록 설정
         self.navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "예) 닭가슴살"
 
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "홈"
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "취소"
         searchController.searchBar.tintColor = .black
     }
 
@@ -131,11 +132,5 @@ extension SearchViewController: UISearchBarDelegate {
 
         // ViewModel에게 검색을 시작하라고 알림
         viewModel.search(with: searchText)
-    }
-
-    // 사용자가 "홈" 버튼을 눌렀을 때 호출됨
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // 모든 스택을 제거하고 첫 화면으로 돌아감
-        self.navigationController?.popToRootViewController(animated: true)
     }
 }

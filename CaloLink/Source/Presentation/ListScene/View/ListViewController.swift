@@ -76,6 +76,7 @@ final class ListViewController: UIViewController {
         setupUI()
         setupTableView()
         setupSearchController()
+        setupGestureRecognizers()
         bindViewModel()
     }
 
@@ -128,6 +129,7 @@ private extension ListViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.obscuresBackgroundDuringPresentation = false
 
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "다른 상품 검색하기"
@@ -156,6 +158,20 @@ private extension ListViewController {
             alert.addAction(UIAlertAction(title: "확인", style: .default))
             self?.present(alert, animated: true)
         }
+    }
+}
+
+// MARK: - Gesture Recognizer Setup
+private extension ListViewController {
+    // 키보드를 내리기 위한 제스처를 설정
+    func setupGestureRecognizers() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func dismissKeyboard() {
+        searchController.searchBar.resignFirstResponder()
     }
 }
 
