@@ -1,10 +1,3 @@
-//
-//  FilterViewController.swift
-//  CaloLink
-//
-//  Created by 김성훈 on 8/14/25.
-//
-
 import UIKit
 
 // MARK: - FilterViewController
@@ -122,7 +115,23 @@ private extension FilterViewController {
     }
 
     @objc private func completeButtonTapped() {
-        // 텍스트 필드의 현재 값들을 ViewModel에 업데이트
+        // 입력 값 검증 로직
+        for (index, item) in viewModel.filterItems.enumerated() {
+            // 텍스트 필드에서 min, max 값을 Double? 타입으로 가져옴
+            let minText = minTextFields[index].text?.trimmingCharacters(in: .whitespaces)
+            let maxText = maxTextFields[index].text?.trimmingCharacters(in: .whitespaces)
+
+            let minValue = (minText?.isEmpty ?? true) ? nil : Double(minText!)
+            let maxValue = (maxText?.isEmpty ?? true) ? nil : Double(maxText!)
+
+            // min과 max 값이 모두 존재하고 min이 max보다 큰 경우 에러 알림을 띄움
+            if let min = minValue, let max = maxValue, min > max {
+                showAlert(title: "입력 값 오류", message: "\(item.title)의 최소값이 최대값보다 클 수 없습니다.")
+                return
+            }
+        }
+
+        // 검증 통과 후 텍스트 필드의 현재 값들을 ViewModel에 업데이트
         for (index, _) in viewModel.filterItems.enumerated() {
             let minText = minTextFields[index].text
             let maxText = maxTextFields[index].text
@@ -139,6 +148,13 @@ private extension FilterViewController {
         // 모든 텍스트 필드의 내용을 지움
         minTextFields.forEach { $0.text = "" }
         maxTextFields.forEach { $0.text = "" }
+    }
+
+    // 알림창을 띄우는 헬퍼 메서드
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default))
+        present(alert, animated: true)
     }
 }
 
@@ -173,7 +189,7 @@ private extension FilterViewController {
     func createNumericTextField(placeholder: String) -> UITextField {
         let textField = UITextField()
         textField.placeholder = placeholder
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.borderStyle = .roundedRect
         textField.backgroundColor = .systemGray6
         textField.textAlignment = .right

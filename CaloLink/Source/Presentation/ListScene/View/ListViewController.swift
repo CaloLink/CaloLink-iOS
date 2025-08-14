@@ -144,6 +144,7 @@ private extension ListViewController {
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.autocapitalizationType = .none
 
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "다른 상품 검색하기"
