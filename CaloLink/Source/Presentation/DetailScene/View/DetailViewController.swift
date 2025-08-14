@@ -135,11 +135,20 @@ private extension DetailViewController {
         productPriceView.isHidden = isNutritionSelected
     }
 
-    // 내비게이션 바를 설정
+    // 내비게이션바 설정
     func setupNavigationBar() {
-        // 기본 뒤로가기 버튼의 텍스트를 숨김
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationController?.navigationBar.tintColor = .black
+        // 홈 버튼을 생성하고 오른쪽에 추가
+        let homeButton = UIBarButtonItem(
+            image: UIImage(systemName: "house"),
+            style: .plain,
+            target: self,
+            action: #selector(homeButtonTapped)
+        )
+        self.navigationItem.rightBarButtonItem = homeButton
+    }
+
+    @objc private func homeButtonTapped() {
+        navigationController?.popToRootViewController(animated: true)
     }
 
     // ViewModel의 상태 변화를 구독하고 UI를 업데이트

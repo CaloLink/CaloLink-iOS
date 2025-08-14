@@ -24,6 +24,20 @@ final class DIContainer {
     lazy var getProductDetailUseCase: GetProductDetailUseCaseProtocol = GetProductDetailUseCase(productRepository: productRepository)
 
     // MARK: - 조립 라인 (Factory Methods)
+    // MARK: - 메인 Scene
+    // MainViewModel을 생성하는 팩토리 메서드
+    func makeMainViewModel() -> MainViewModel {
+        // 지금은 UseCase 의존성이 없으므로 그냥 생성만
+        return MainViewModel()
+    }
+
+    // MainViewController를 생성하는 팩토리 메서드
+    func makeMainViewController() -> MainViewController {
+        return MainViewController(
+            viewModel: makeMainViewModel(),
+            diContainer: self
+        )
+    }
 
     // MARK: - 검색 Scene
     // SearchViewModel을 생성하는 팩토리 메서드
