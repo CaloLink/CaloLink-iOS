@@ -45,6 +45,7 @@
 		BC88BC6A2E4DEF0300F4B556 /* RecentKeywordRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC692E4DEEFB00F4B556 /* RecentKeywordRepositoryProtocol.swift */; };
 		BC88BC6C2E4DEFBA00F4B556 /* RecentKeywordUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC6B2E4DEFB700F4B556 /* RecentKeywordUseCase.swift */; };
 		BC88BC6E2E4DF0C200F4B556 /* DefaultRecentKeywordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC6D2E4DF0C100F4B556 /* DefaultRecentKeywordRepository.swift */; };
+		BC88BC702E4DF3A100F4B556 /* RecentKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC88BC6F2E4DF39500F4B556 /* RecentKeywordCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		BC88BC692E4DEEFB00F4B556 /* RecentKeywordRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordRepositoryProtocol.swift; sourceTree = "<group>"; };
 		BC88BC6B2E4DEFB700F4B556 /* RecentKeywordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordUseCase.swift; sourceTree = "<group>"; };
 		BC88BC6D2E4DF0C100F4B556 /* DefaultRecentKeywordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRecentKeywordRepository.swift; sourceTree = "<group>"; };
+		BC88BC6F2E4DF39500F4B556 /* RecentKeywordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentKeywordCell.swift; sourceTree = "<group>"; };
 		BCFC37812E4A0385009A03D0 /* CaloLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaloLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37972E4A0387009A03D0 /* CaloLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCFC37A12E4A0387009A03D0 /* CaloLinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaloLinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +273,7 @@
 		BC7342D72E4AF99200A24ADE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BC88BC6F2E4DF39500F4B556 /* RecentKeywordCell.swift */,
 				BC88BC2C2E4CC74F00F4B556 /* SearchViewController.swift */,
 			);
 			path = View;
@@ -565,6 +568,7 @@
 			files = (
 				BC7342E62E4B428000A24ADE /* NutritionInfo.swift in Sources */,
 				BC88BC6A2E4DEF0300F4B556 /* RecentKeywordRepositoryProtocol.swift in Sources */,
+				BC88BC702E4DF3A100F4B556 /* RecentKeywordCell.swift in Sources */,
 				BC73430A2E4B635400A24ADE /* NetworkError.swift in Sources */,
 				BC7342EE2E4B4D5600A24ADE /* GetProductDetailUseCase.swift in Sources */,
 				BC7342E82E4B428800A24ADE /* ShopLink.swift in Sources */,
