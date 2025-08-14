@@ -40,13 +40,16 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupSearchController()
+        setupGestureRecognizers()
         bindViewModel()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // 화면이 나타나면 바로 키보드가 올라오도록 설정
-        searchController.searchBar.becomeFirstResponder()
+        DispatchQueue.main.async { [weak self] in
+            self?.searchController.searchBar.becomeFirstResponder()
+        }
     }
 }
 
@@ -73,12 +76,11 @@ private extension SearchViewController {
         self.navigationItem.title = "검색"
         // 스크롤 시에도 검색창이 항상 보이도록 설정
         self.navigationItem.hidesSearchBarWhenScrolling = false
-
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "예) 닭가슴살"
 
-        // Cancel 버튼 텍스트 및 색상 변경
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "취소"
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "홈"
         searchController.searchBar.tintColor = .black
     }
 
@@ -105,6 +107,22 @@ private extension SearchViewController {
     }
 }
 
+// MARK: - Gesture Recognizer Setup
+private extension SearchViewController {
+    // 키보드를 내리기 위한 제스처를 설정
+    func setupGestureRecognizers() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        // 다른 UI 요소(예: 테이블뷰 셀)의 터치 이벤트를 막지 않도록 설정
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func dismissKeyboard() {
+        // 현재 활성화된 키보드를 내립니다.
+        searchController.searchBar.resignFirstResponder()
+    }
+}
+
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
     // 사용자가 키보드의 "Search" 버튼을 눌렀을 때 호출됨
@@ -113,5 +131,11 @@ extension SearchViewController: UISearchBarDelegate {
 
         // ViewModel에게 검색을 시작하라고 알림
         viewModel.search(with: searchText)
+    }
+
+    // 사용자가 "홈" 버튼을 눌렀을 때 호출됨
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // 모든 스택을 제거하고 첫 화면으로 돌아감
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
