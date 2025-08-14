@@ -26,7 +26,7 @@ protocol ProductRepositoryProtocol {
 // 상품 목록을 검색할 때 필요한 모든 조건을 담는 구조체
 struct SearchQuery {
     let searchText: String              // 검색어
-    let sortOption: SortOption          // 정렬조건
+    var sortOption: SortOption          // 정렬조건
     let filterOption: FilterOption      // 필터조건
     let page: Int                       // 페이지네이션의 페이지 번호
 
@@ -38,7 +38,7 @@ struct SearchQuery {
 }
 
 // MARK: - SortOption
-enum SortOption: String {
+enum SortOption: String, CaseIterable {
     case defaultOrder                   // 기본순
     case priceAscending                 // 가격 낮은 순
     case priceDescending                // 가격 높은 순
