@@ -270,9 +270,9 @@ extension ListViewController: UISearchBarDelegate {
 
         // 새로운 ListViewController를 push
         let query = SearchQuery(searchText: searchText,
-                                  sortOption: .defaultOrder,
-                                  filterOption: .default,
-                                  page: 1)
+                                sortOption: .defaultOrder,
+                                filterOption: .default,
+                                page: 1)
 
         let newListVC = self.diContainer.makeListViewController()
         newListVC.viewModel.fetchProducts(with: query)
@@ -313,6 +313,19 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             let selectedProduct = products[indexPath.row]
             let detailVC = diContainer.makeDetailViewController(productId: selectedProduct.id)
             navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // 현재 데이터 목록의 마지막 아이템 인덱스를 계산
+        // state가 .success일 때만 products 배열에 접근
+        if case .success(let products) = viewModel.state {
+            let lastItemIndex = products.count - 1
+
+            // 화면에 나타날 셀이 마지막 아이템이라면 다음 페이지를 요청
+            if indexPath.row == lastItemIndex {
+                viewModel.fetchNextPage()
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ protocol ProductRepositoryProtocol {
     // 특정 조건에 맞는 상품 목록 가져오기
     func fetchProducts(
         query: SearchQuery,
-        completion: @escaping (Result<[Product], Error>) -> Void
+        completion: @escaping (Result<ProductPage, Error>) -> Void
     )
 
     // 특정 상품의 상세 정보 가져오기
@@ -22,13 +22,21 @@ protocol ProductRepositoryProtocol {
     )
 }
 
+// MARK: - ProductPage
+// 상품 목록과 페이지 정보를 함께 담는 모델
+struct ProductPage {
+    let products: [Product]
+    let currentPage: Int
+    let totalPages: Int
+}
+
 // MARK: - SearchQuery
 // 상품 목록을 검색할 때 필요한 모든 조건을 담는 구조체
 struct SearchQuery {
     let searchText: String              // 검색어
     var sortOption: SortOption          // 정렬조건
     var filterOption: FilterOption      // 필터조건
-    let page: Int                       // 페이지네이션의 페이지 번호
+    var page: Int                       // 페이지네이션의 페이지 번호
 
     // 기본값 설정
     static let `default` = SearchQuery(searchText: "",
