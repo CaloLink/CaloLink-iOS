@@ -47,7 +47,7 @@ jobs:
           xcodebuild build \
             -project CaloLink.xcodeproj \
             -scheme CaloLink \
-            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.0' \
             -skipPackagePluginValidation \
             -skipMacroValidation \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
