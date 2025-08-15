@@ -47,6 +47,7 @@ jobs:
           xcodebuild build \
             -project CaloLink.xcodeproj \
             -scheme CaloLink \
+            -sdk iphonesimulator \
             -skipPackagePluginValidation \
             -skipMacroValidation \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
