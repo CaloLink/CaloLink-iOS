@@ -79,7 +79,7 @@ final class ListViewModel {
         guard var query = self.currentQuery else { return }
 
         isFetchingNextPage = true
-        query.page += 1 // 페이지 번호 증가
+        query.page = self.currentPage + 1
 
         searchProductsUseCase.execute(query: query) { [weak self] result in
             DispatchQueue.main.async {
@@ -91,6 +91,7 @@ final class ListViewModel {
                         currentProducts.append(contentsOf: newProductPage.products)
                         self?.state = .success(currentProducts)
                         self?.currentPage = newProductPage.currentPage
+                        self?.currentQuery?.page = newProductPage.currentPage
                     }
                 case .failure(let error):
                     // 다음 페이지 로딩 실패 시 에러 처리
