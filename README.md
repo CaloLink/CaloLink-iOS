@@ -53,5 +53,5 @@
 | **이름** | **역할** | **GitHub** |
 | --- | --- | --- |
 | 김성훈 | iOS 개발 | [@snughnu](https://github.com/snughnu) |
-| 윤정우 | 백엔드 개발 |  |
+| 윤정우 | 백엔드 개발 | [@JuYun9](https://github.com/JUYun9)  |
 | 제다빈 | 백엔드 개발 |  |
