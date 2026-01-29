@@ -20,7 +20,7 @@ final class DefaultProductRepository: ProductRepositoryProtocol {
     // MARK: - 상품 목록 가져오기
     func fetchProducts(
         query: SearchQuery,
-        completion: @escaping (Result<[Product], Error>) -> Void
+        completion: @escaping (Result<ProductPage, Error>) -> Void
     ) {
         // "상품 검색" API 명세서(Endpoint)를 만듦
         let endpoint = ProductAPI.Search(query: query)
@@ -29,12 +29,16 @@ final class DefaultProductRepository: ProductRepositoryProtocol {
         networkService.request(endpoint: endpoint) { result in
             switch result {
             case .success(let productListDTO):
-                // 성공시 DTO를 Domain Entity로 변환하여 전달
+                // DTO를 ProductPage 엔티티로 변환
                 let products = productListDTO.products.map { $0.toDomain() }
-                completion(.success(products))
-                
+                let productPage = ProductPage(
+                    products: products,
+                    currentPage: productListDTO.currentPage,
+                    totalPages: productListDTO.totalPages
+                )
+                completion(.success(productPage))
+
             case .failure(let error):
-                // 실패시 받은 에러를 그대로 전달
                 completion(.failure(error))
             }
         }

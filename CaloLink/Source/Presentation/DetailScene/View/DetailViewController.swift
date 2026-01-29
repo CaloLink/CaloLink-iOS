@@ -5,6 +5,7 @@
 //  Created by 김성훈 on 8/13/25.
 //
 
+import Kingfisher
 import UIKit
 
 // MARK: - DetailViewController
@@ -183,22 +184,8 @@ private extension DetailViewController {
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 50, weight: .light)
         )
 
-        // TODO: - 비동기, 이미지 로드 개선
-        if let imageURL = viewModel.imageURL {
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.productImageView.image = image
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        self.productImageView.image = placeholderImage
-                    }
-                }
-            }
-        } else {
-            productImageView.image = placeholderImage
-        }
+        // 이미지 로드: Kingfisher 코드 사용
+        productImageView.kf.setImage(with: viewModel.imageURL, placeholder: placeholderImage)
 
         // ViewModel의 가공된 프로퍼티를 사용
         if let nutritionInfo = viewModel.nutritionInfo {

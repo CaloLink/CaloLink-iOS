@@ -10,7 +10,7 @@
 protocol SearchProductsUseCaseProtocol {
     func execute(
         query: SearchQuery,
-        completion: @escaping (Result<[Product], Error>) -> Void
+        completion: @escaping (Result<ProductPage, Error>) -> Void
     )
 }
 
@@ -32,7 +32,7 @@ final class SearchProductsUseCase: SearchProductsUseCaseProtocol {
     // UseCase의 핵심 로직을 수행하는 메서드
     func execute(
         query: SearchQuery,
-        completion: @escaping (Result<[Product], Error>) -> Void
+        completion: @escaping (Result<ProductPage, Error>) -> Void
     ) {
         // 검색을 실행하기전, 검색어를 로컬에 저장
         if !query.searchText.isEmpty {

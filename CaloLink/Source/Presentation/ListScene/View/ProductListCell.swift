@@ -5,6 +5,7 @@
 //  Created by 김성훈 on 8/13/25.
 //
 
+import Kingfisher
 import UIKit
 
 // MARK: - ProductListCell
@@ -71,20 +72,8 @@ final class ProductListCell: UITableViewCell {
             withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .light)
         )
 
-        // TODO: - 비동기, 이미지 로드 개선
-        if let imageURL = product.imageURL {
-            self.productImageView.image = placeholderImage
-
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: imageURL), let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self.productImageView.image = image
-                    }
-                }
-            }
-        } else {
-            self.productImageView.image = placeholderImage
-        }
+        // 이미지 로드: Kingfisher 코드 사용
+        productImageView.kf.setImage(with: product.imageURL, placeholder: placeholderImage)
     }
 
     private func formatPrice(_ price: Int) -> String {
